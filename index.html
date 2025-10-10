@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Afa Putri — Web Developer Kreatif</title>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: #fff0f5;
+      color: #333;
+      overflow-x: hidden;
+    }
+
+    /* ===== NAVBAR ===== */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(255, 192, 203, 0.9);
+      padding: 15px 60px;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(8px);
+    }
+
+    .logo {
+      font-size: 1.8em;
+      color: #fff;
+      font-weight: 700;
+    }
+
+    .logo span {
+      color: #ff69b4;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    nav ul li a:hover {
+      color: #ff69b4;
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      height: 100vh;
+      background: linear-gradient(135deg, #ffb6c1, #ff69b4);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: white;
+      padding: 0 15px;
+    }
+
+    .hero h2 {
+      font-size: 3em;
+      margin-bottom: 10px;
+    }
+
+    .hero span {
+      color: #fff0f5;
+    }
+
+    .hero button {
+      background: white;
+      color: #ff69b4;
+      border: none;
+      padding: 10px 25px;
+      border-radius: 25px;
+      font-size: 1em;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .hero button:hover {
+      background: #ffe5ec;
+      transform: translateY(-2px);
+    }
+
+    /* ===== SECTIONS ===== */
+    section {
+      padding: 100px 10%;
+      text-align: center;
+    }
+
+    section h2 {
+      color: #ff69b4;
+      margin-bottom: 20px;
+      font-size: 2em;
+    }
+
+    .fade-section {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.8s ease;
+    }
+
+    .fade-section.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ===== TIMELINE ===== */
+    .timeline {
+      max-width: 700px;
+      margin: 30px auto;
+      text-align: left;
+    }
+
+    .timeline-item {
+      margin-bottom: 25px;
+      background: white;
+      padding: 20px;
+      border-left: 5px solid #ff69b4;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    }
+
+    /* ===== ORGANISASI ===== */
+    .org-container {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 25px;
+    }
+
+    .org-card {
+      background: white;
+      padding: 20px;
+      width: 300px;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .org-card:hover {
+      transform: scale(1.05);
+    }
+
+    /* ===== PORTOFOLIO ===== */
+    .portfolio-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 25px;
+    }
+
+    .portfolio-card {
+      background: white;
+      width: 330px;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+      transition: all 0.3s;
+    }
+
+    .portfolio-card:hover {
+      transform: translateY(-10px);
+    }
+
+    .portfolio-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .card-content {
+      padding: 15px;
+    }
+
+    .card-content h3 {
+      color: #ff69b4;
+      margin-bottom: 10px;
+    }
+
+    .tag {
+      display: inline-block;
+      margin-top: 8px;
+      padding: 4px 10px;
+      background: #ffe5ec;
+      color: #ff69b4;
+      border-radius: 10px;
+      font-size: 0.85em;
+    }
+
+    /* ===== KONTAK ===== */
+    .contact-form {
+      max-width: 500px;
+      margin: 30px auto;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .contact-form input, .contact-form textarea {
+      padding: 12px;
+      border: 1px solid #ffc0cb;
+      border-radius: 10px;
+      font-size: 1em;
+      outline: none;
+    }
+
+    .contact-form button {
+      background: #ff69b4;
+      color: white;
+      border: none;
+      padding: 12px;
+      border-radius: 25px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .contact-form button:hover {
+      background: #ff85c1;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: #ffc0cb;
+      text-align: center;
+      padding: 15px;
+      color: white;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      nav ul {
+        flex-direction: column;
+        background: rgba(255, 192, 203, 0.95);
+        position: absolute;
+        top: 60px;
+        right: 0;
+        width: 180px;
+        padding: 15px;
+        border-radius: 10px;
+        display: none;
+      }
+
+      nav ul.show-menu {
+        display: flex;
+      }
+
+      .navbar {
+        flex-wrap: wrap;
+      }
+
+      .menu-toggle {
+        display: block;
+        background: none;
+        border: none;
+        color: white;
+        font-size: 1.5em;
+        cursor: pointer;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== NAVBAR ===== -->
+  <header class="navbar">
+    <h1 class="logo">Afa<span>Creative</span></h1>
+    <button class="menu-toggle">☰</button>
+    <nav>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#profil">Profil</a></li>
+        <li><a href="#pendidikan">Pendidikan</a></li>
+        <li><a href="#organisasi">Organisasi</a></li>
+        <li><a href="#portofolio">Portofolio</a></li>
+        <li><a href="#kontak">Kontak</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- ===== HERO ===== -->
+  <section id="home" class="hero">
+    <div class="hero-content">
+      <h2>Halo, Saya <span>Afa Putri</span></h2>
+      <p>Web Developer muda dengan semangat tinggi untuk menciptakan pengalaman digital yang berkesan.</p>
+      <button id="btn-explore">Lihat Portofolio</button>
+    </div>
+  </section>
+
+  <!-- ===== PROFIL ===== -->
+  <section id="profil" class="fade-section">
+    <h2>Profil</h2>
+    <p>
+      Saya adalah siswi SMK Informatika Utama jurusan Rekayasa Perangkat Lunak (RPL).
+      Saya memiliki passion di bidang desain dan pengembangan website modern. 
+      Saya tertarik mengikuti program magang untuk memperluas pengalaman profesional 
+      serta mengasah kemampuan front-end development dengan HTML, CSS, dan JavaScript.
+    </p>
+  </section>
+
+  <!-- ===== PENDIDIKAN ===== -->
+  <section id="pendidikan" class="fade-section">
+    <h2>Pendidikan</h2>
+    <div class="timeline">
+      <div class="timeline-item">
+        <h3>SMK Informatika Utama</h3>
+        <span>2022 – Sekarang</span>
+        <p>Jurusan Rekayasa Perangkat Lunak. Fokus belajar desain web, front-end, dan dasar UI/UX.</p>
+      </div>
+      <div class="timeline-item">
+        <h3>SMPN 5 Depok</h3>
+        <span>Lulus 2022</span>
+        <p>Aktif dalam kegiatan organisasi sekolah dan lomba desain poster digital.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ORGANISASI ===== -->
+  <section id="organisasi" class="fade-section">
+    <h2>Pengalaman Organisasi</h2>
+    <div class="org-container">
+      <div class="org-card">
+        <h3>OSIS SMK Informatika Utama</h3>
+        <p><strong>Sekretaris</strong> (2023 – Sekarang)</p>
+        <p>Mengelola administrasi kegiatan dan membantu koordinasi event sekolah.</p>
+      </div>
+      <div class="org-card">
+        <h3>Panitia Seminar Kesehatan</h3>
+        <p><strong>Divisi Desain</strong> (2024)</p>
+        <p>Membuat poster digital dan layout publikasi acara.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PORTOFOLIO ===== -->
+  <section id="portofolio" class="fade-section">
+    <h2>Portofolio Website</h2>
+    <div class="portfolio-container">
+      <div class="portfolio-card">
+        <img src="https://source.unsplash.com/500x300/?makeup,website" alt="Makeup Store">
+        <div class="card-content">
+          <h3>Toko Makeup “Glowify”</h3>
+          <p>Website e-commerce statis bertema pastel pink dengan fitur keranjang dan desain elegan.</p>
+          <span class="tag">HTML • CSS • JS</span>
+        </div>
+      </div>
+
+      <div class="portfolio-card">
+        <img src="https://source.unsplash.com/500x300/?portfolio,webdesign" alt="Portfolio Web">
+        <div class="card-content">
+          <h3>Website Portofolio Interaktif</h3>
+          <p>Website personal dengan efek parallax dan animasi scroll untuk personal branding.</p>
+          <span class="tag">HTML • CSS • JavaScript</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== KONTAK ===== -->
+  <section id="kontak" class="fade-section">
+    <h2>Kontak</h2>
+    <p>Ingin bekerja sama atau membuka peluang magang? Saya siap berkontribusi!</p>
+    <div class="contact-form">
+      <input type="text" placeholder="Nama Lengkap">
+      <input type="email" placeholder="Email Aktif">
+      <textarea placeholder="Pesan atau tujuan magang..."></textarea>
+      <button id="sendBtn">Kirim</button>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <p>© 2025 AfaCreative — Dibuat dengan ❤️ oleh Afa Putri</p>
+  </footer>
+
+  <script>
+    // Animasi scroll ke portofolio
+    document.getElementById("btn-explore").addEventListener("click", () => {
+      document.querySelector("#portofolio").scrollIntoView({ behavior: "smooth" });
+    });
+
+    // Efek fade saat scroll
+    const fadeSections = document.querySelectorAll(".fade-section");
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add("show");
+      });
+    }, { threshold: 0.2 });
+    fadeSections.forEach(section => observer.observe(section));
+
+    // Notifikasi kirim form
+    document.getElementById("sendBtn").addEventListener("click", () => {
+      alert("Terima kasih! Pesan kamu sudah dikirim. Saya akan segera menghubungi kamu.");
+    });
+
+    // Menu toggle untuk mobile
+    const toggle = document.querySelector(".menu-toggle");
+    const navMenu = document.querySelector("nav ul");
+    toggle.addEventListener("click", () => {
+      navMenu.classList.toggle("show-menu");
+    });
+  </script>
+
+</body>
+</html>
