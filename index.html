@@ -3,8 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Afa Putri — Web Developer Kreatif</title>
-
+  <title>Adinia Rasya Putri — Web Developer Muda</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
 
@@ -22,7 +21,6 @@
       overflow-x: hidden;
     }
 
-    /* ===== NAVBAR ===== */
     .navbar {
       display: flex;
       justify-content: space-between;
@@ -63,7 +61,6 @@
       color: #ff69b4;
     }
 
-    /* ===== HERO ===== */
     .hero {
       height: 100vh;
       background: linear-gradient(135deg, #ffb6c1, #ff69b4);
@@ -100,7 +97,6 @@
       transform: translateY(-2px);
     }
 
-    /* ===== SECTIONS ===== */
     section {
       padding: 100px 10%;
       text-align: center;
@@ -123,7 +119,6 @@
       transform: translateY(0);
     }
 
-    /* ===== TIMELINE ===== */
     .timeline {
       max-width: 700px;
       margin: 30px auto;
@@ -139,15 +134,14 @@
       box-shadow: 0 5px 15px rgba(0,0,0,0.05);
     }
 
-    /* ===== ORGANISASI ===== */
-    .org-container {
+    .org-container, .portfolio-container, .skills-container {
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
       gap: 25px;
     }
 
-    .org-card {
+    .org-card, .skill-card {
       background: white;
       padding: 20px;
       width: 300px;
@@ -156,16 +150,8 @@
       transition: transform 0.3s ease;
     }
 
-    .org-card:hover {
+    .org-card:hover, .skill-card:hover {
       transform: scale(1.05);
-    }
-
-    /* ===== PORTOFOLIO ===== */
-    .portfolio-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 25px;
     }
 
     .portfolio-card {
@@ -206,7 +192,6 @@
       font-size: 0.85em;
     }
 
-    /* ===== KONTAK ===== */
     .contact-form {
       max-width: 500px;
       margin: 30px auto;
@@ -238,7 +223,6 @@
       background: #ff85c1;
     }
 
-    /* ===== FOOTER ===== */
     footer {
       background: #ffc0cb;
       text-align: center;
@@ -246,7 +230,6 @@
       color: white;
     }
 
-    /* ===== RESPONSIVE ===== */
     @media (max-width: 768px) {
       nav ul {
         flex-direction: column;
@@ -281,144 +264,157 @@
 </head>
 <body>
 
-  <!-- ===== NAVBAR ===== -->
-  <header class="navbar">
-    <h1 class="logo">Afa<span>Creative</span></h1>
-    <button class="menu-toggle">☰</button>
-    <nav>
-      <ul>
-        <li><a href="#home">Home</a></li>
-        <li><a href="#profil">Profil</a></li>
-        <li><a href="#pendidikan">Pendidikan</a></li>
-        <li><a href="#organisasi">Organisasi</a></li>
-        <li><a href="#portofolio">Portofolio</a></li>
-        <li><a href="#kontak">Kontak</a></li>
-      </ul>
-    </nav>
-  </header>
+<header class="navbar">
+  <h1 class="logo">Adinia<span>Dev</span></h1>
+  <button class="menu-toggle">☰</button>
+  <nav>
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#profil">Profil</a></li>
+      <li><a href="#pendidikan">Pendidikan</a></li>
+      <li><a href="#prestasi">Prestasi</a></li>
+      <li><a href="#organisasi">Organisasi</a></li>
+      <li><a href="#keterampilan">Keterampilan</a></li>
+      <li><a href="#kontak">Kontak</a></li>
+    </ul>
+  </nav>
+</header>
 
-  <!-- ===== HERO ===== -->
-  <section id="home" class="hero">
-    <div class="hero-content">
-      <h2>Halo, Saya <span>Afa Putri</span></h2>
-      <p>Web Developer muda dengan semangat tinggi untuk menciptakan pengalaman digital yang berkesan.</p>
-      <button id="btn-explore">Lihat Portofolio</button>
+<section id="home" class="hero">
+  <div class="hero-content">
+    <h2>Halo, Saya <span>Adinia Rasya Putri</span></h2>
+    <p>Siswi SMK RPL yang antusias dalam dunia IT dan pengembangan perangkat lunak.</p>
+    <button id="btn-explore">Lihat Portofolio</button>
+  </div>
+</section>
+
+<section id="profil" class="fade-section">
+  <h2>Profil</h2>
+  <p>
+    Saya merupakan siswa SMK dengan jurusan Rekayasa Perangkat Lunak yang memiliki antusiasme tinggi terhadap teknologi informasi dan pengembangan perangkat lunak.
+    Saya memiliki pemahaman dasar mengenai konsep pemrograman dan proses pengembangan perangkat lunak. 
+    Saya juga aktif mengikuti kegiatan organisasi dan perlombaan sebagai wadah pengembangan diri.
+  </p>
+</section>
+
+<section id="pendidikan" class="fade-section">
+  <h2>Pendidikan</h2>
+  <div class="timeline">
+    <div class="timeline-item">
+      <h3>SMK Informatika Utama</h3>
+      <span>2024 – Sekarang</span>
+      <p>Jurusan Rekayasa Perangkat
+      Lunak (RPL). Fokus pada pengembangan aplikasi web dengan dasar HTML, CSS, PHP, dan Laravel.</p>
     </div>
-  </section>
-
-  <!-- ===== PROFIL ===== -->
-  <section id="profil" class="fade-section">
-    <h2>Profil</h2>
-    <p>
-      Saya adalah siswi SMK Informatika Utama jurusan Rekayasa Perangkat Lunak (RPL).
-      Saya memiliki passion di bidang desain dan pengembangan website modern. 
-      Saya tertarik mengikuti program magang untuk memperluas pengalaman profesional 
-      serta mengasah kemampuan front-end development dengan HTML, CSS, dan JavaScript.
-    </p>
-  </section>
-
-  <!-- ===== PENDIDIKAN ===== -->
-  <section id="pendidikan" class="fade-section">
-    <h2>Pendidikan</h2>
-    <div class="timeline">
-      <div class="timeline-item">
-        <h3>SMK Informatika Utama</h3>
-        <span>2022 – Sekarang</span>
-        <p>Jurusan Rekayasa Perangkat Lunak. Fokus belajar desain web, front-end, dan dasar UI/UX.</p>
-      </div>
-      <div class="timeline-item">
-        <h3>SMPN 5 Depok</h3>
-        <span>Lulus 2022</span>
-        <p>Aktif dalam kegiatan organisasi sekolah dan lomba desain poster digital.</p>
-      </div>
+    <div class="timeline-item">
+      <h3>SMPN 21 Depok</h3>
+      <span>2021 – 2024</span>
+      <p>Ketua Paskibra, aktif dalam lomba baris-berbaris dan kegiatan organisasi serta lomba KIR tingkat internasional.</p>
     </div>
-  </section>
-
-  <!-- ===== ORGANISASI ===== -->
-  <section id="organisasi" class="fade-section">
-    <h2>Pengalaman Organisasi</h2>
-    <div class="org-container">
-      <div class="org-card">
-        <h3>OSIS SMK Informatika Utama</h3>
-        <p><strong>Sekretaris</strong> (2023 – Sekarang)</p>
-        <p>Mengelola administrasi kegiatan dan membantu koordinasi event sekolah.</p>
-      </div>
-      <div class="org-card">
-        <h3>Panitia Seminar Kesehatan</h3>
-        <p><strong>Divisi Desain</strong> (2024)</p>
-        <p>Membuat poster digital dan layout publikasi acara.</p>
-      </div>
+    <div class="timeline-item">
+      <h3>SDN Krukut 1</h3>
+      <span>2015 – 2021</span>
+      <p>Dasar pendidikan formal dan pengembangan karakter sejak dini.</p>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ===== PORTOFOLIO ===== -->
-  <section id="portofolio" class="fade-section">
-    <h2>Portofolio Website</h2>
-    <div class="portfolio-container">
-      <div class="portfolio-card">
-        <img src="https://source.unsplash.com/500x300/?makeup,website" alt="Makeup Store">
-        <div class="card-content">
-          <h3>Toko Makeup “Glowify”</h3>
-          <p>Website e-commerce statis bertema pastel pink dengan fitur keranjang dan desain elegan.</p>
-          <span class="tag">HTML • CSS • JS</span>
-        </div>
-      </div>
-
-      <div class="portfolio-card">
-        <img src="https://source.unsplash.com/500x300/?portfolio,webdesign" alt="Portfolio Web">
-        <div class="card-content">
-          <h3>Website Portofolio Interaktif</h3>
-          <p>Website personal dengan efek parallax dan animasi scroll untuk personal branding.</p>
-          <span class="tag">HTML • CSS • JavaScript</span>
-        </div>
-      </div>
+<!-- ===== PRESTASI ===== -->
+<section id="prestasi" class="fade-section">
+  <h2>Prestasi</h2>
+  <div class="timeline">
+    <div class="timeline-item">
+      <h3>Peringkat 1 di Kelas 9</h3>
+      <span>2024</span>
+      <p>Meraih peringkat pertama dari 40 siswa di SMPN 21 Depok.</p>
     </div>
-  </section>
-
-  <!-- ===== KONTAK ===== -->
-  <section id="kontak" class="fade-section">
-    <h2>Kontak</h2>
-    <p>Ingin bekerja sama atau membuka peluang magang? Saya siap berkontribusi!</p>
-    <div class="contact-form">
-      <input type="text" placeholder="Nama Lengkap">
-      <input type="email" placeholder="Email Aktif">
-      <textarea placeholder="Pesan atau tujuan magang..."></textarea>
-      <button id="sendBtn">Kirim</button>
+    <div class="timeline-item">
+      <h3>Karya Ilmiah Remaja (KIR)</h3>
+      <span>2023</span>
+      <p>Mewakili sekolah dalam lomba KIR tingkat internasional di Universitas Pancasila.</p>
     </div>
-  </section>
+    <div class="timeline-item">
+      <h3>Ketua Paskibra SMPN 21</h3>
+      <span>2022 – 2023</span>
+      <p>Memimpin tim Paskibra dalam berbagai lomba dan event resmi sekolah maupun luar sekolah.</p>
+    </div>
+  </div>
+</section>
 
-  <!-- ===== FOOTER ===== -->
-  <footer>
-    <p>© 2025 AfaCreative — Dibuat dengan ❤️ oleh Afa Putri</p>
-  </footer>
+<!-- ===== ORGANISASI ===== -->
+<section id="organisasi" class="fade-section">
+  <h2>Pengalaman Organisasi</h2>
+  <div class="org-container">
+    <div class="org-card">
+      <h3>Anggota OSIS</h3>
+      <p><strong>SMK Informatika Utama</strong> (2024 – Sekarang)</p>
+      <p>Aktif dalam kegiatan sekolah dan pengembangan siswa.</p>
+    </div>
+    <div class="org-card">
+      <h3>Bendahara Panitia 17 Agustus</h3>
+      <p><strong>Karang Taruna RT001/006</strong> (2023 – Sekarang)</p>
+      <p>Mengelola keuangan dan menyusun proposal kegiatan tingkat RT.</p>
+    </div>
+  </div>
+</section>
 
-  <script>
-    // Animasi scroll ke portofolio
-    document.getElementById("btn-explore").addEventListener("click", () => {
-      document.querySelector("#portofolio").scrollIntoView({ behavior: "smooth" });
+<!-- ===== KETERAMPILAN ===== -->
+<section id="keterampilan" class="fade-section">
+  <h2>Keterampilan</h2>
+  <div class="skills-container">
+    <div class="skill-card"><h3>HTML</h3><p>9/10</p></div>
+    <div class="skill-card"><h3>CSS</h3><p>8/10</p></div>
+    <div class="skill-card"><h3>Laravel Dasar</h3><p>9/10</p></div>
+    <div class="skill-card"><h3>MySQL</h3><p>7/10</p></div>
+    <div class="skill-card"><h3>PHP</h3><p>8/10</p></div>
+    <div class="skill-card"><h3>Canva</h3><p>10/10</p></div>
+  </div>
+</section>
+
+<!-- ===== KONTAK ===== -->
+<section id="kontak" class="fade-section">
+  <h2>Kontak</h2>
+  <p>Ingin bekerja sama atau membuka peluang magang? Saya siap berkontribusi!</p>
+  <div class="contact-form">
+    <input type="text" placeholder="Adinia Rasya Putri" disabled>
+    <input type="email" placeholder="adinia112009@gmail.com" disabled>
+    <textarea placeholder="Jalan Raya Krukut No.36, Krukut, Limo, Depok" disabled></textarea>
+    <button id="sendBtn">Hubungi via WhatsApp</button>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <p>© 2025 AdiniaDev — Dibuat dengan ❤️ oleh Adinia Rasya Putri | 0857-7160-0670</p>
+</footer>
+
+<script>
+  // Animasi scroll ke portofolio
+  document.getElementById("btn-explore").addEventListener("click", () => {
+    document.querySelector("#keterampilan").scrollIntoView({ behavior: "smooth" });
+  });
+
+  // Efek fade saat scroll
+  const fadeSections = document.querySelectorAll(".fade-section");
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add("show");
     });
+  }, { threshold: 0.2 });
+  fadeSections.forEach(section => observer.observe(section));
 
-    // Efek fade saat scroll
-    const fadeSections = document.querySelectorAll(".fade-section");
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) entry.target.classList.add("show");
-      });
-    }, { threshold: 0.2 });
-    fadeSections.forEach(section => observer.observe(section));
+  // Notifikasi kirim
+  document.getElementById("sendBtn").addEventListener("click", () => {
+    alert("Silakan hubungi saya melalui WhatsApp: 0857-7160-0670");
+  });
 
-    // Notifikasi kirim form
-    document.getElementById("sendBtn").addEventListener("click", () => {
-      alert("Terima kasih! Pesan kamu sudah dikirim. Saya akan segera menghubungi kamu.");
-    });
-
-    // Menu toggle untuk mobile
-    const toggle = document.querySelector(".menu-toggle");
-    const navMenu = document.querySelector("nav ul");
-    toggle.addEventListener("click", () => {
-      navMenu.classList.toggle("show-menu");
-    });
-  </script>
+  // Toggle menu di mobile
+  const toggle = document.querySelector(".menu-toggle");
+  const navMenu = document.querySelector("nav ul");
+  toggle.addEventListener("click", () => {
+    navMenu.classList.toggle("show-menu");
+  });
+</script>
 
 </body>
 </html>
