@@ -1,130 +1,173 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portofolio Adinia Rasya Putri</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-  <style>
-    /* CSS Internal */
-    * { margin:0; padding:0; box-sizing:border-box; font-family:'Poppins',sans-serif; }
-    body { background-color: #fef6fb; color:#333; line-height:1.6; }
-    header { background-color:#ff77a9; padding:20px; color:white; }
-    header h1 { display:inline-block; margin-right:50px; }
-    nav ul { list-style:none; display:inline-block; }
-    nav ul li { display:inline-block; margin-right:20px; }
-    nav ul li a { color:white; text-decoration:none; font-weight:600; }
-    section { padding:50px 20px; max-width:900px; margin:auto; }
-    section h2 { color:#ff3d9c; margin-bottom:20px; }
-    .skill { margin-bottom:15px; }
-    .bar { background-color:#ddd; width:100%; height:20px; border-radius:10px; }
-    .progress { background-color:#ff3d9c; height:100%; border-radius:10px; width:0; transition:width 1s; }
-    .project { background-color:#ffe6f0; padding:15px; margin-bottom:15px; border-radius:10px; transition: transform 0.3s; }
-    .project:hover { transform: translateY(-5px); }
-    footer { background-color:#ff77a9; color:white; text-align:center; padding:15px 0; }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portofolio Adinia Rasya Putri</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+  /* RESET & BODY */
+  * { margin:0; padding:0; box-sizing:border-box; font-family:'Poppins',sans-serif; scroll-behavior: smooth; }
+  body { background:#1c1c1c; color:#e0e0e0; line-height:1.6; }
+  a { text-decoration:none; color:inherit; }
+
+  /* HEADER / NAVBAR */
+  header { position:sticky; top:0; background:#2a2a2a; padding:15px 30px; display:flex; justify-content:space-between; align-items:center; z-index:1000; }
+  header h1 { color:#ff79c6; font-weight:700; }
+  nav ul { list-style:none; display:flex; gap:25px; }
+  nav ul li a { color:#e0e0e0; font-weight:500; transition:0.3s; }
+  nav ul li a:hover { color:#ff79c6; }
+
+  /* SECTIONS */
+  section { padding:80px 20px; max-width:1000px; margin:auto; opacity:0; transform: translateY(30px); transition:1s ease-out; }
+  section.show { opacity:1; transform: translateY(0); }
+  section h2 { color:#ff79c6; margin-bottom:25px; font-size:2rem; text-align:center; }
+
+  /* ABOUT */
+  #about p { margin-bottom:10px; text-align:center; }
+
+  /* CARDS */
+  .card { background:#2a2a2a; border-left:5px solid #ff79c6; padding:20px; margin-bottom:20px; border-radius:8px; transition:0.3s; }
+  .card:hover { transform: translateY(-5px); background:#333; }
+
+  /* SKILLS */
+  .skill { margin-bottom:15px; }
+  .bar { background:#333; width:100%; height:20px; border-radius:10px; overflow:hidden; }
+  .progress { background:#ff79c6; height:100%; width:0; transition:1s ease-in-out; }
+
+  /* PROJECTS */
+  .projects { display:grid; grid-template-columns: repeat(auto-fit,minmax(280px,1fr)); gap:20px; }
+  .project { background:#2a2a2a; padding:20px; border-radius:8px; transition:0.3s; cursor:pointer; }
+  .project:hover { transform: scale(1.05); background:#333; }
+
+  /* FOOTER */
+  footer { background:#2a2a2a; color:#e0e0e0; text-align:center; padding:15px 0; margin-top:40px; border-top:1px solid #444; }
+
+  /* RESPONSIVE */
+  @media(max-width:600px){ nav ul { flex-direction:column; gap:10px; margin-top:10px; } }
+</style>
 </head>
 <body>
-  <header>
-    <nav>
-      <h1>Adinia Rasya Putri</h1>
-      <ul>
-        <li><a href="#about">Tentang</a></li>
-        <li><a href="#education">Pendidikan</a></li>
-        <li><a href="#skills">Keterampilan</a></li>
-        <li><a href="#experience">Pengalaman</a></li>
-        <li><a href="#projects">Proyek</a></li>
-      </ul>
-    </nav>
-  </header>
 
-  <section id="about">
-    <h2>Tentang Saya</h2>
-    <p>Saya merupakan siswa SMK jurusan Rekayasa Perangkat Lunak dengan antusiasme tinggi terhadap teknologi informasi dan pengembangan perangkat lunak. Memiliki pemahaman dasar mengenai konsep pemrograman dan proses pengembangan perangkat lunak.</p>
-    <p><strong>Kontak:</strong> 0857-7160-0670 | adinia112009@gmail.com</p>
-    <p><strong>Alamat:</strong> Jalan Raya Krukut No.36, Krukut, Limo, Depok</p>
-  </section>
-
-  <section id="education">
-    <h2>Pendidikan & Prestasi</h2>
+<header>
+  <h1>Adinia Rasya Putri</h1>
+  <nav>
     <ul>
-      <li><strong>SDN Krukut 1 (2015-2021)</strong></li>
-      <li><strong>SMPN 21 DEPOK (2021-2024)</strong>
-        <ul>
-          <li>Ketua Paskibra 2022-2023</li>
-          <li>Peringkat 1 dari 40 siswa di kelas 9</li>
-          <li>Mengikuti lomba baris-berbaris & KIR internasional</li>
-        </ul>
-      </li>
-      <li><strong>SMK INFORMATIKA UTAMA (2024-Sekarang)</strong></li>
+      <li><a href="#about">Tentang</a></li>
+      <li><a href="#education">Pendidikan</a></li>
+      <li><a href="#skills">Keterampilan</a></li>
+      <li><a href="#experience">Pengalaman</a></li>
+      <li><a href="#projects">Proyek</a></li>
     </ul>
-  </section>
+  </nav>
+</header>
 
-  <section id="skills">
-    <h2>Keterampilan</h2>
-    <div class="skill">
-      <p>HTML</p>
-      <div class="bar"><div class="progress" style="width:90%"></div></div>
-    </div>
-    <div class="skill">
-      <p>CSS</p>
-      <div class="bar"><div class="progress" style="width:80%"></div></div>
-    </div>
-    <div class="skill">
-      <p>Laravel Dasar</p>
-      <div class="bar"><div class="progress" style="width:90%"></div></div>
-    </div>
-    <div class="skill">
-      <p>MySQL</p>
-      <div class="bar"><div class="progress" style="width:70%"></div></div>
-    </div>
-    <div class="skill">
-      <p>PHP</p>
-      <div class="bar"><div class="progress" style="width:80%"></div></div>
-    </div>
-    <div class="skill">
-      <p>CANVA</p>
-      <div class="bar"><div class="progress" style="width:100%"></div></div>
-    </div>
-  </section>
+<section id="about">
+  <h2>Tentang Saya</h2>
+  <p>Saya siswa SMK jurusan Rekayasa Perangkat Lunak dengan antusiasme tinggi terhadap teknologi informasi dan pengembangan perangkat lunak. Memiliki pemahaman dasar mengenai konsep pemrograman dan proses pengembangan perangkat lunak.</p>
+  <p><strong>Kontak:</strong> 0857-7160-0670 | adinia112009@gmail.com</p>
+  <p><strong>Alamat:</strong> Jalan Raya Krukut No.36, Krukut, Limo, Depok</p>
+</section>
 
-  <section id="experience">
-    <h2>Pengalaman Organisasi</h2>
+<section id="education">
+  <h2>Pendidikan & Prestasi</h2>
+  <div class="card">
+    <h3>SDN Krukut 1 (2015-2021)</h3>
+  </div>
+  <div class="card">
+    <h3>SMPN 21 DEPOK (2021-2024)</h3>
     <ul>
-      <li>Junior Web Developer</li>
-      <li>Anggota OSIS SMK INFORMATIKA UTAMA (2024-Sekarang)</li>
-      <li>Bendahara Panitia 17 Agustus & Karang Taruna RT001/006 (2023-Sekarang)</li>
+      <li>Ketua Paskibra 2022-2023</li>
+      <li>Peringkat 1 dari 40 siswa di kelas 9</li>
+      <li>Mengikuti lomba baris-berbaris & KIR internasional</li>
     </ul>
-  </section>
+  </div>
+  <div class="card">
+    <h3>SMK INFORMATIKA UTAMA (2024-Sekarang)</h3>
+  </div>
+</section>
 
-  <section id="projects">
-    <h2>Proyek</h2>
+<section id="skills">
+  <h2>Keterampilan</h2>
+  <div class="skill">
+    <p>HTML</p>
+    <div class="bar"><div class="progress" style="width:90%"></div></div>
+  </div>
+  <div class="skill">
+    <p>CSS</p>
+    <div class="bar"><div class="progress" style="width:80%"></div></div>
+  </div>
+  <div class="skill">
+    <p>Laravel Dasar</p>
+    <div class="bar"><div class="progress" style="width:90%"></div></div>
+  </div>
+  <div class="skill">
+    <p>MySQL</p>
+    <div class="bar"><div class="progress" style="width:70%"></div></div>
+  </div>
+  <div class="skill">
+    <p>PHP</p>
+    <div class="bar"><div class="progress" style="width:80%"></div></div>
+  </div>
+  <div class="skill">
+    <p>CANVA</p>
+    <div class="bar"><div class="progress" style="width:100%"></div></div>
+  </div>
+</section>
+
+<section id="experience">
+  <h2>Pengalaman Organisasi</h2>
+  <div class="card">
+    <p>Junior Web Developer</p>
+  </div>
+  <div class="card">
+    <p>Anggota OSIS SMK INFORMATIKA UTAMA (2024-Sekarang)</p>
+  </div>
+  <div class="card">
+    <p>Bendahara Panitia 17 Agustus & Karang Taruna RT001/006 (2023-Sekarang)</p>
+  </div>
+</section>
+
+<section id="projects">
+  <h2>Proyek</h2>
+  <div class="projects">
     <div class="project">
       <h3>Website Toko Online Kelas 10</h3>
-      <p>Membuat website statis sederhana untuk toko online menggunakan HTML dan CSS.</p>
+      <p>Membuat website statis sederhana untuk toko online menggunakan HTML & CSS.</p>
     </div>
     <div class="project">
       <h3>Aplikasi POS Laravel</h3>
-      <p>Membuat aplikasi Point of Sale berbasis Laravel dan MySQL, menggunakan Laragon untuk testing lokal.</p>
+      <p>Membuat aplikasi Point of Sale berbasis Laravel & MySQL dengan Laragon.</p>
     </div>
-  </section>
+  </div>
+</section>
 
-  <footer>
-    <p>&copy; 2025 Adinia Rasya Putri</p>
-  </footer>
+<footer>
+  <p>&copy; 2025 Adinia Rasya Putri</p>
+</footer>
 
-  <script>
-    // Animasi progress bar
-    window.addEventListener('load', () => {
-      const progressBars = document.querySelectorAll('.progress');
-      progressBars.forEach(bar => {
-        const width = bar.style.width;
-        bar.style.width = '0';
-        setTimeout(() => {
-          bar.style.width = width;
-        }, 200);
-      });
+<script>
+  // Animasi scroll fade in
+  const sections = document.querySelectorAll('section');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add('show');
+      }
     });
-  </script>
+  }, { threshold:0.2 });
+  sections.forEach(section => observer.observe(section));
+
+  // Progress bar animasi
+  window.addEventListener('load', () => {
+    const progressBars = document.querySelectorAll('.progress');
+    progressBars.forEach(bar => {
+      const width = bar.style.width;
+      bar.style.width = '0';
+      setTimeout(() => { bar.style.width = width; }, 300);
+    });
+  });
+</script>
+
 </body>
 </html>
