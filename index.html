@@ -1,10 +1,11 @@
 <!--
-File: index.html
-Petunjuk singkat:
-1) Simpan file ini sebagai index.html lalu buka di browser.
-2) Ganti foto profil: letakkan file foto di folder yang sama dan ubah src pada <img id="profilePhoto"> menjadi "foto-saya.jpg" atau URL.
-3) Ganti link sosial: cari class="social-link" dan ubah href Instagram & GitHub ke profilmu.
-4) Untuk menambah project, salin satu blok <div class="project-card"> di bagian #portfolio dan sesuaikan data-image/data-title/data-desc/data-tags.
+  File: index.html
+  Petunjuk:
+  1) Simpan sebagai index.html lalu buka di browser.
+  2) Ganti foto header: letakkan file foto dengan nama header-photo.jpg di folder yg sama
+     atau edit src pada <img id="hdrPhoto"> menjadi path/URL fotomu.
+  3) Ganti kontak / teks langsung di bagian "DATA PENGGANTI" di dalam HTML jika perlu.
+  4) Untuk deploy cepat: cukup unggah file ini ke GitHub Pages atau hosting statis.
 -->
 
 <!doctype html>
@@ -12,28 +13,33 @@ Petunjuk singkat:
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Portofolio — Adinia Rasya Putri</title>
+  <title>Portofolio PKL — Adinia Rasya Putri</title>
+
+  <!-- Icon -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
+
   <style>
-    /* ===== Variables & reset ===== */
+    /* =========================
+       Variables & Reset
+       ========================= */
     :root{
-      --bg:#fbfdff;
-      --card:#ffffff;
-      --muted:#6b7280;
-      --accent:#0b63ff;    /* biru */
-      --accent-2:#0f1724;  /* hitam kebiruan */
-      --soft:#f3f6fb;
+      --bg: #f7f9fb;
+      --panel: #ffffff;
+      --muted: #6b7280;
+      --accent: #0b63ff;      /* biru profesional */
+      --accent-2: #0f1724;    /* hitam kebiruan */
+      --soft: #eef6ff;
       --glass: rgba(11,99,255,0.06);
-      --radius:14px;
+      --radius:12px;
       --shadow: 0 10px 30px rgba(16,24,40,0.06);
-      --max-w:1200px;
+      --max-w:1100px;
       --mono: "Inter", "Segoe UI", Roboto, Arial, sans-serif;
     }
     *{box-sizing:border-box;margin:0;padding:0}
     html,body{height:100%}
     body{
       font-family:var(--mono);
-      background:linear-gradient(180deg,var(--bg),#eef4ff);
+      background: linear-gradient(180deg, var(--bg), #eef4ff);
       color:var(--accent-2);
       -webkit-font-smoothing:antialiased;
       -moz-osx-font-smoothing:grayscale;
@@ -41,450 +47,454 @@ Petunjuk singkat:
       scroll-behavior:smooth;
     }
     a{color:inherit;text-decoration:none}
-    .container{max-width:var(--max-w);margin:32px auto;padding:24px}
+    .wrap{max-width:var(--max-w);margin:28px auto;padding:18px}
 
-    /* ===== Header ===== */
-    header.top{
-      display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:22px;
-    }
-    .brand{display:flex;gap:12px;align-items:center}
-    .logo{
-      width:50px;height:50px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#65a8ff);
-      color:white;display:grid;place-items:center;font-weight:800;box-shadow:0 8px 30px rgba(11,99,255,0.12)
-    }
-    .brand h1{font-size:18px;margin:0}
-    nav.nav{display:flex;gap:10px}
-    nav.nav a{padding:8px 12px;border-radius:10px;font-size:14px;color:var(--accent-2)}
-    nav.nav a:hover{background:var(--soft)}
-
-    /* ===== Hero ===== */
-    .hero{
-      display:grid;grid-template-columns: 360px 1fr;gap:28px;align-items:center;margin-bottom:30px;
-    }
-    .card{
-      background:var(--card);border-radius:var(--radius);padding:20px;box-shadow:var(--shadow)
+    /* =========================
+       Header (foto di atas)
+       ========================= */
+    header.site{
+      display:flex;
+      flex-direction:column;
+      gap:18px;
+      align-items:stretch;
+      margin-bottom:18px;
     }
 
-    /* Photo frame */
-    .photo-frame{
-      height:360px;border-radius:12px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;
-      background:linear-gradient(180deg, rgba(11,99,255,0.04), rgba(0,0,0,0.02));
-      border:1px solid rgba(11,99,255,0.06)
+    .header-hero{
+      display:flex;
+      gap:20px;
+      align-items:center;
+      background:var(--panel);
+      border-radius:var(--radius);
+      padding:18px;
+      box-shadow:var(--shadow);
+      overflow:hidden;
     }
-    #profilePhoto{
-      width:220px;height:220px;border-radius:50%;object-fit:cover;border:8px solid #fff;box-shadow:0 10px 30px rgba(11,99,255,0.12);
-      transition:transform .45s cubic-bezier(.2,.9,.3,1)
-    }
-    .photo-frame:hover #profilePhoto{transform:translateY(-6px) scale(1.02)}
-    .intro{padding:12px 0}
-    .intro h2{font-size:22px;margin-bottom:6px}
-    .intro p{color:var(--muted);font-size:14px;margin-bottom:10px}
 
-    .cta-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
+    .hdr-left{
+      display:flex;
+      gap:16px;
+      align-items:center;
+      min-width:0;
+    }
+
+    .hdr-photo{
+      width:120px;height:120px;border-radius:12px;overflow:hidden;flex:0 0 120px;
+      border:6px solid #fff;box-shadow:0 8px 22px rgba(11,99,255,0.12);
+    }
+    .hdr-photo img{width:100%;height:100%;object-fit:cover;display:block}
+
+    .hdr-info h1{font-size:20px;margin-bottom:6px}
+    .hdr-info p{margin:0;color:var(--muted);font-size:13px}
+
+    .hdr-actions{margin-left:auto;display:flex;gap:10px;align-items:center}
     .btn{
       display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:10px;background:linear-gradient(90deg,var(--accent),#66a1ff);
-      color:white;font-weight:700;border:none;cursor:pointer;box-shadow: 0 8px 24px rgba(11,99,255,0.14)
+      color:#fff;font-weight:700;border:none;cursor:pointer;
     }
-    .btn.secondary{background:transparent;border:1px solid rgba(11,99,255,0.12);color:var(--accent-2);font-weight:600}
+    .btn.ghost{background:transparent;color:var(--accent-2);border:1px solid rgba(11,99,255,0.12)}
 
-    .socials{display:flex;gap:8px;margin-top:12px}
-    .socials a{width:44px;height:44px;border-radius:10px;display:grid;place-items:center;background:#fff;box-shadow:0 6px 18px rgba(2,6,23,0.06)}
+    .socials{display:flex;gap:8px}
+    .socials a{display:inline-grid;place-items:center;width:44px;height:44px;border-radius:10px;background:#fff;box-shadow:0 6px 18px rgba(2,6,23,0.06)}
+    .socials a i{font-size:16px;color:var(--accent-2)}
 
-    /* ===== Right column hero: highlights ===== */
-    .highlights{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
-    .highlight{background:var(--card);padding:14px;border-radius:12px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:8px}
-    .highlight h4{margin:0}
-    .highlight p{margin:0;color:var(--muted);font-size:13px}
-
-    /* ===== Portfolio gallery ===== */
-    .section-title{display:flex;align-items:center;justify-content:space-between;gap:12px}
-    .section-title h3{margin:0}
-    .filters{display:flex;gap:8px}
-    .filter-btn{padding:8px 10px;border-radius:10px;border:1px solid rgba(11,99,255,0.08);background:#fff;cursor:pointer;font-weight:600}
-    .filter-btn.active{background:linear-gradient(90deg,var(--accent),#66a1ff);color:#fff}
-
-    .grid{
-      margin-top:14px;display:grid;grid-template-columns:repeat(3,1fr);gap:14px;
+    /* =========================
+       Two-column main layout
+       ========================= */
+    .main{
+      display:grid;
+      grid-template-columns: 320px 1fr;
+      gap:20px;
+      margin-top:10px;
     }
-    .project-card{
-      position:relative;border-radius:12px;overflow:hidden;cursor:pointer;background:linear-gradient(180deg,#fff,#fbfdff);
-      border:1px solid rgba(2,6,23,0.03);box-shadow:0 8px 28px rgba(2,6,23,0.04);
-      transition:transform .25s, box-shadow .25s;
+
+    /* Left sidebar (ringkas & profesional) */
+    aside.sidebar{
+      background:var(--panel);
+      border-radius:var(--radius);
+      padding:18px;
+      box-shadow:var(--shadow);
+      display:flex;flex-direction:column;gap:14px;
+      position:sticky;top:22px;height:fit-content;
     }
-    .project-card:hover{transform:translateY(-6px);box-shadow:0 16px 40px rgba(2,6,23,0.08)}
-    .project-card img{width:100%;height:180px;object-fit:cover;display:block}
-    .project-body{padding:12px}
-    .project-body h4{margin:0 0 6px;font-size:16px}
-    .project-body p{margin:0;color:var(--muted);font-size:13px}
-    .project-tags{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
-    .tag{font-size:12px;padding:6px 8px;border-radius:8px;background:rgba(11,99,255,0.06);color:var(--accent-2);font-weight:700}
 
-    /* modal */
-    .modal{
-      position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(2,6,23,0.5);z-index:1000;padding:20px;
+    .mb-title{font-size:14px;color:var(--muted);font-weight:700}
+    .contact-list{display:flex;flex-direction:column;gap:8px}
+    .contact-item{display:flex;gap:10px;align-items:center;padding:10px;border-radius:10px;background:linear-gradient(180deg,#fff,#fbfdff);border:1px solid rgba(2,6,23,0.03)}
+    .contact-item i{width:20px;text-align:center;color:var(--accent)}
+    .badge{display:inline-block;padding:6px 10px;border-radius:999px;background:rgba(11,99,255,0.08);color:var(--accent-2);font-weight:700;font-size:13px}
+
+    /* Right content */
+    .content{display:flex;flex-direction:column;gap:16px}
+
+    .card{
+      background:var(--panel);
+      border-radius:var(--radius);
+      padding:16px;
+      box-shadow:var(--shadow);
     }
-    .modal.show{display:flex}
-    .modal-card{max-width:900px;width:100%;background:var(--card);border-radius:12px;padding:18px;box-shadow:0 30px 80px rgba(2,6,23,0.6);overflow:auto}
-    .modal-top{display:flex;gap:14px}
-    .modal-top img{width:320px;height:200px;object-fit:cover;border-radius:8px}
-    .modal-body h4{margin:0 0 8px}
-    .modal-close{margin-left:auto;background:transparent;border:none;font-size:18px;cursor:pointer}
+    .card h3{margin:0 0 8px}
 
-    /* Skills */
-    .skills{display:flex;gap:12px;flex-wrap:wrap;margin-top:8px}
-    .skill-pill{padding:8px 10px;border-radius:999px;border:1px solid rgba(11,99,255,0.08);background:#fff;font-weight:700;font-size:13px}
+    /* Education / timeline */
+    .timeline{display:flex;flex-direction:column;gap:12px}
+    .tl-item{display:flex;gap:12px;align-items:flex-start}
+    .tl-dot{width:12px;height:12px;border-radius:50%;background:var(--accent);margin-top:6px}
+    .tl-body h4{margin:0;font-size:15px}
+    .tl-body p{margin:0;color:var(--muted);font-size:13px}
 
-    /* Contact form */
-    .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    /* Skills: progress */
+    .skills-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+    .skill-row{display:flex;flex-direction:column;gap:6px}
+    .skill-row .meta{display:flex;justify-content:space-between;font-weight:700}
+    .progress{height:10px;background:rgba(15,23,36,0.05);border-radius:999px;overflow:hidden}
+    .progress > i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--accent),#66a1ff);transition:width 1.1s cubic-bezier(.2,.9,.3,1);box-shadow:0 6px 18px rgba(11,99,255,0.12)}
+
+    /* Experience list */
+    .exp-list{display:flex;flex-direction:column;gap:10px}
+    .exp-item{padding:12px;border-radius:10px;background:linear-gradient(180deg,#fff,#fbfdff);border:1px solid rgba(2,6,23,0.03)}
+
+    /* Achievements */
+    .achieve-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+
+    /* Contact form simple */
+    .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
     input,textarea{width:100%;padding:10px;border-radius:8px;border:1px solid rgba(2,6,23,0.06);font-size:14px}
     textarea{resize:vertical}
 
-    footer{margin-top:26px;text-align:center;color:var(--muted);font-size:13px}
+    footer{margin-top:18px;text-align:center;color:var(--muted);font-size:13px}
 
-    /* responsive */
+    /* Responsive */
     @media (max-width:980px){
-      .hero{grid-template-columns:1fr;gap:18px}
-      .grid{grid-template-columns:repeat(2,1fr)}
-      .modal-top img{display:none}
-    }
-    @media (max-width:600px){
-      .grid{grid-template-columns:1fr}
-      nav.nav{display:none}
+      .main{grid-template-columns:1fr}
+      aside.sidebar{position:relative;top:0}
+      .skills-grid{grid-template-columns:1fr}
+      .achieve-grid{grid-template-columns:1fr}
       .contact-grid{grid-template-columns:1fr}
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <!-- Header -->
-    <header class="top">
-      <div class="brand">
-        <div class="logo">AR</div>
-        <div>
-          <h1>Adinia Rasya Putri</h1>
-          <div style="color:var(--muted);font-size:13px">SMK — Rekayasa Perangkat Lunak</div>
+  <div class="wrap">
+    <!-- ===== HEADER HERO (Foto di atas sesuai permintaan) ===== -->
+    <header class="site">
+      <div class="header-hero" id="home">
+        <div class="hdr-left">
+          <div class="hdr-photo" title="Klik untuk instruksi ganti foto">
+            <!-- Ganti foto header dengan nama file header-photo.jpg -->
+            <img id="hdrPhoto" src="header-photo.jpg" alt="Foto Adinia Rasya Putri">
+          </div>
+          <div class="hdr-info">
+            <h1>Adinia Rasya Putri</h1>
+            <p class="muted">Siswa SMK — Rekayasa Perangkat Lunak • Mencari kesempatan PKL / Magang (Praktek Kerja Lapangan)</p>
+
+            <!-- ringkasan singkat profil (professional tone untuk magang) -->
+            <div style="margin-top:8px;color:var(--muted);font-size:14px;max-width:640px">
+              Saya berpengalaman membuat website statis & aplikasi POS dasar menggunakan Laravel dan MySQL. Aktif dalam kegiatan organisasi, terlatih bekerja dalam tim, dan cepat belajar teknologi baru.
+            </div>
+          </div>
+        </div>
+
+        <div class="hdr-actions">
+          <div style="text-align:right">
+            <div style="font-size:12px;color:var(--muted)">Lokasi</div>
+            <div class="badge" style="margin-top:6px">Depok, Jawa Barat</div>
+          </div>
+
+          <div style="display:flex;flex-direction:column;gap:8px;align-items:flex-end">
+            <div style="display:flex;gap:8px">
+              <a class="btn" href="#contact">Ajukan Magang</a>
+              <a class="btn ghost" href="#portfolio">Lihat Proyek</a>
+            </div>
+
+            <div class="socials" style="margin-top:6px">
+              <!-- IG & GitHub sesuai input user -->
+              <a href="https://www.instagram.com/dinia_rasya/" target="_blank" title="Instagram">
+                <i class="fab fa-instagram"></i>
+              </a>
+              <a href="https://github.com/adiniarasya" target="_blank" title="GitHub">
+                <i class="fab fa-github"></i>
+              </a>
+              <a href="mailto:adinia112009@gmail.com" title="Email">
+                <i class="fa fa-envelope"></i>
+              </a>
+            </div>
+          </div>
         </div>
       </div>
-      <nav class="nav" aria-label="navigasi utama">
-        <a href="#home">Home</a>
-        <a href="#portfolio">Portofolio</a>
-        <a href="#skills">Keterampilan</a>
-        <a href="#experience">Pengalaman</a>
-        <a href="#contact">Kontak</a>
+
+      <!-- NAV (ringkas, untuk navigasi cepat) -->
+      <nav style="display:flex;gap:10px;justify-content:flex-end">
+        <a href="#about" class="muted">Tentang</a>
+        <a href="#education" class="muted">Pendidikan</a>
+        <a href="#skills" class="muted">Keterampilan</a>
+        <a href="#experience" class="muted">Pengalaman</a>
+        <a href="#achievements" class="muted">Prestasi</a>
+        <a href="#contact" class="muted">Kontak</a>
       </nav>
     </header>
 
-    <!-- HERO -->
-    <section class="hero" id="home">
-      <!-- kiri: profil -->
-      <aside class="card">
-        <div class="photo-frame" title="Klik untuk instruksi ganti foto">
-          <!-- Ganti src ke foto-saya.jpg atau URL -->
-          <img id="profilePhoto" src="foto-saya.jpg" alt="Adinia Rasya Putri">
-        </div>
-        <div class="intro">
-          <h2>Halo — Saya Adinia</h2>
-          <p>Siswa SMK jurusan Rekayasa Perangkat Lunak. Antusias dengan teknologi, pembuatan website, dan solusi digital.</p>
-          <div class="cta-row">
-            <a class="btn" href="#portfolio">Lihat Portofolio</a>
-            <a class="btn secondary" href="mailto:adinia112009@gmail.com">Hubungi</a>
+    <!-- ===== MAIN (sidebar + content) ===== -->
+    <div class="main">
+      <!-- SIDEBAR KIRI -->
+      <aside class="sidebar" aria-label="Informasi singkat">
+        <div>
+          <div class="mb-title">Informasi Kontak</div>
+          <div class="contact-list" style="margin-top:8px">
+            <div class="contact-item"><i class="fa fa-phone"></i><div>0857-7160-0670</div></div>
+            <div class="contact-item"><i class="fa fa-envelope"></i><div>adinia112009@gmail.com</div></div>
+            <div class="contact-item"><i class="fa fa-map-marker-alt"></i><div>Jalan Raya Krukut No.36, Krukut, Limo, Depok</div></div>
           </div>
-          <div class="socials" style="margin-top:12px">
-            <!-- Ganti href ke profilmu -->
-            <a class="social-link" href="https://instagram.com/username" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
-            <a class="social-link" href="https://github.com/username" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-            <a class="social-link" href="tel:085771600670" title="Telepon"><i class="fa fa-phone"></i></a>
+        </div>
+
+        <div>
+          <div class="mb-title">Tujuan Magang</div>
+          <p style="color:var(--muted);font-size:14px;margin-top:8px">
+            Mencari pengalaman PKL/ magang di bidang pengembangan web (front-end / back-end) untuk mengaplikasikan keterampilan RPL dan belajar praktik industri nyata.
+          </p>
+        </div>
+
+        <div>
+          <div class="mb-title">Tautan Cepat</div>
+          <div style="display:flex;gap:8px;margin-top:8px">
+            <a class="badge" href="#portfolio">Portofolio</a>
+            <a class="badge" href="#contact">Kontak</a>
+          </div>
+        </div>
+
+        <div>
+          <div class="mb-title">Kelengkapan</div>
+          <div style="margin-top:8px;color:var(--muted);font-size:14px">
+            Siapkan: CV PDF, surat pengantar, dan portofolio projek (link atau file) saat mengajukan magang.
           </div>
         </div>
       </aside>
 
-      <!-- kanan: highlights -->
-      <div style="display:flex;flex-direction:column;gap:12px">
-        <div class="highlights">
-          <div class="highlight">
-            <h4>Proyek Terbaru</h4>
-            <p class="muted">Toko Online (statis) & Aplikasi POS sederhana berbasis Laravel</p>
+      <!-- CONTENT KANAN -->
+      <div class="content">
+
+        <!-- ABOUT -->
+        <section id="about" class="card" aria-labelledby="aboutTitle">
+          <h3 id="aboutTitle">Tentang Saya</h3>
+          <p style="color:var(--muted);margin-top:8px">
+            Saya merupakan siswa SMK jurusan Rekayasa Perangkat Lunak yang memiliki antusiasme tinggi terhadap teknologi informasi dan pengembangan perangkat lunak.
+            Memiliki pemahaman dasar mengenai konsep pemrograman dan proses pengembangan perangkat lunak. Teliti, komunikatif, dan siap untuk pembelajaran praktek industri (PKL).
+          </p>
+        </section>
+
+        <!-- EDUCATION -->
+        <section id="education" class="card">
+          <h3>Pendidikan</h3>
+          <div class="timeline" style="margin-top:8px">
+            <div class="tl-item">
+              <div class="tl-dot"></div>
+              <div class="tl-body">
+                <h4>SDN Krukut 1</h4>
+                <p class="muted">2015 — 2021</p>
+              </div>
+            </div>
+
+            <div class="tl-item">
+              <div class="tl-dot"></div>
+              <div class="tl-body">
+                <h4>SMPN 21 DEPOK</h4>
+                <p class="muted">2021 — 2024 — Meraih peringkat 1 dari 40 siswa di kelas 9</p>
+              </div>
+            </div>
+
+            <div class="tl-item">
+              <div class="tl-dot"></div>
+              <div class="tl-body">
+                <h4>SMK INFORMATIKA UTAMA — RPL</h4>
+                <p class="muted">2024 — Sekarang</p>
+              </div>
+            </div>
           </div>
-          <div class="highlight">
-            <h4>Keahlian Utama</h4>
-            <p class="muted">HTML, CSS, PHP, Laravel dasar, MySQL, Canva</p>
+        </section>
+
+        <!-- SKILLS -->
+        <section id="skills" class="card">
+          <h3>Keterampilan Teknis</h3>
+          <p class="muted" style="margin-top:8px">Skill utama dan tingkat kemampuan (skala 1–10).</p>
+
+          <div class="skills-grid" style="margin-top:12px">
+            <div class="skill-row">
+              <div class="meta"><span>HTML</span><span>9/10</span></div>
+              <div class="progress"><i data-w="90"></i></div>
+            </div>
+
+            <div class="skill-row">
+              <div class="meta"><span>CSS</span><span>8/10</span></div>
+              <div class="progress"><i data-w="80"></i></div>
+            </div>
+
+            <div class="skill-row">
+              <div class="meta"><span>Laravel (Dasar)</span><span>9/10</span></div>
+              <div class="progress"><i data-w="90"></i></div>
+            </div>
+
+            <div class="skill-row">
+              <div class="meta"><span>MySQL</span><span>7/10</span></div>
+              <div class="progress"><i data-w="70"></i></div>
+            </div>
+
+            <div class="skill-row">
+              <div class="meta"><span>Canva</span><span>10/10</span></div>
+              <div class="progress"><i data-w="100"></i></div>
+            </div>
+
+            <div class="skill-row">
+              <div class="meta"><span>PHP</span><span>8/10</span></div>
+              <div class="progress"><i data-w="80"></i></div>
+            </div>
           </div>
-          <div class="highlight">
-            <h4>Organisasi</h4>
-            <p class="muted">Anggota OSIS — Bendahara Panitia & Ketua Paskibra SMPN 21 DEPOK</p>
+        </section>
+
+        <!-- EXPERIENCE -->
+        <section id="experience" class="card">
+          <h3>Pengalaman & Organisasi</h3>
+          <div class="exp-list" style="margin-top:10px">
+            <div class="exp-item">
+              <strong>Junior Web Developer (Project Sekolah)</strong>
+              <div class="muted" style="margin-top:4px">Membuat website statis dan prototype POS sederhana menggunakan Laravel & Laragon.</div>
+            </div>
+
+            <div class="exp-item">
+              <strong>Anggota OSIS — SMK INFORMATIKA UTAMA</strong>
+              <div class="muted" style="margin-top:4px">2024 - Sekarang — ikut serta dalam perencanaan acara sekolah.</div>
+            </div>
+
+            <div class="exp-item">
+              <strong>Bendahara Panitia 17 Agustus & Karang Taruna</strong>
+              <div class="muted" style="margin-top:4px">2023 - Sekarang — bertugas mengelola administrasi keuangan acara.</div>
+            </div>
           </div>
-          <div class="highlight">
-            <h4>Lokasi</h4>
-            <p class="muted">Depok — Indonesia</p>
+        </section>
+
+        <!-- ACHIEVEMENTS -->
+        <section id="achievements" class="card">
+          <h3>Prestasi</h3>
+          <div class="achieve-grid" style="margin-top:8px">
+            <div style="padding:12px;border-radius:10px;background:linear-gradient(180deg,#fff,#fbfdff);border:1px solid rgba(2,6,23,0.03)">
+              <strong>Ketua Paskibra — SMPN 21 DEPOK</strong>
+              <div class="muted" style="margin-top:6px">2022 - 2023 — aktif dan berprestasi di bidang baris-berbaris.</div>
+            </div>
+
+            <div style="padding:12px;border-radius:10px;background:linear-gradient(180deg,#fff,#fbfdff);border:1px solid rgba(2,6,23,0.03)">
+              <strong>Peserta KIR (Karya Ilmiah Remaja)</strong>
+              <div class="muted" style="margin-top:6px">Pernah mengikuti KIR tingkat internasional di Universitas Pancasila.</div>
+            </div>
           </div>
-        </div>
+        </section>
 
-        <div class="card">
-          <h3 style="margin:0 0 6px">Ringkasan</h3>
-          <p class="muted">Saya memiliki pengalaman membuat website statis, mengembangkan aplikasi POS sederhana dengan Laravel dan MySQL, serta aktif dalam organisasi. Kuat di desain antarmuka dasar dan pembuatan konten grafis menggunakan Canva.</p>
-        </div>
-      </div>
-    </section>
+        <!-- CONTACT -->
+        <section id="contact" class="card">
+          <h3>Kontak & Ajukan Magang</h3>
+          <p class="muted" style="margin-top:6px">Silakan kirim pesan untuk pengajuan PKL / magang — saya siap hadir untuk seleksi dan wawancara.</p>
 
-    <!-- PORTFOLIO -->
-    <section id="portfolio" style="margin-top:18px">
-      <div class="section-title">
-        <h3>Portofolio</h3>
-        <div class="filters" role="tablist" aria-label="filter proyek">
-          <button class="filter-btn active" data-filter="all">Semua</button>
-          <button class="filter-btn" data-filter="web">Website</button>
-          <button class="filter-btn" data-filter="app">Aplikasi</button>
-          <button class="filter-btn" data-filter="desain">Desain</button>
-        </div>
-      </div>
-
-      <div class="grid" id="projectsGrid">
-        <!-- contoh project 1 -->
-        <div class="project-card" data-tags="web" data-title="Toko Online Statis" data-desc="Website toko online statis kelas 10, menampilkan produk, keranjang sederhana (statis)." data-image="https://images.unsplash.com/photo-1526318472351-c75fcf070cf3?auto=format&fit=crop&w=800&q=60">
-          <img src="https://images.unsplash.com/photo-1526318472351-c75fcf070cf3?auto=format&fit=crop&w=800&q=60" alt="">
-          <div class="project-body">
-            <h4>Toko Online (Statis)</h4>
-            <p class="muted">Desain & implementasi front-end untuk toko produk kecantikan.</p>
-            <div class="project-tags"><span class="tag">HTML</span><span class="tag">CSS</span></div>
+          <div style="display:flex;gap:12px;margin-top:12px;flex-wrap:wrap">
+            <a class="btn" href="mailto:adinia112009@gmail.com?subject=Pengajuan%20Magang%20PKL"><i class="fa fa-envelope"></i>&nbsp;Kirim Email</a>
+            <a class="btn ghost" href="tel:085771600670"><i class="fa fa-phone"></i>&nbsp;Telepon</a>
           </div>
-        </div>
 
-        <!-- contoh project 2 -->
-        <div class="project-card" data-tags="app" data-title="Aplikasi POS Sederhana" data-desc="Aplikasi Point of Sale berbasis Laravel & MySQL, fitur transaksi dasar, laporan sederhana." data-image="https://images.unsplash.com/photo-1581091870613-3c6d41f7f3a3?auto=format&fit=crop&w=800&q=60">
-          <img src="https://images.unsplash.com/photo-1581091870613-3c6d41f7f3a3?auto=format&fit=crop&w=800&q=60" alt="">
-          <div class="project-body">
-            <h4>POS (Laravel)</h4>
-            <p class="muted">Back-end dasar dengan Laravel & database MySQL.</p>
-            <div class="project-tags"><span class="tag">Laravel</span><span class="tag">MySQL</span></div>
-          </div>
-        </div>
+          <form style="margin-top:12px" id="applyForm" onsubmit="return false">
+            <div class="contact-grid">
+              <input id="appName" type="text" placeholder="Nama Lengkap" required>
+              <input id="appEmail" type="email" placeholder="Email" required>
+              <input id="appPhone" type="text" placeholder="Nomor Telepon" required>
+              <input id="appSchool" type="text" placeholder="Sekolah / Jurusan" value="SMK INFORMATIKA UTAMA — RPL" required>
+            </div>
+            <textarea id="appMsg" rows="4" placeholder="Ringkas tujuan magang / keterangan" style="margin-top:10px" required></textarea>
+            <div style="display:flex;gap:8px;margin-top:10px">
+              <button class="btn" id="submitApply">Kirim Permohonan</button>
+              <button class="btn ghost" id="resetApply" type="button">Bersihkan</button>
+            </div>
+            <p id="applyMsg" class="muted" style="margin-top:8px"></p>
+          </form>
+        </section>
 
-        <!-- contoh project 3 -->
-        <div class="project-card" data-tags="desain" data-title="Desain Logo & Poster" data-desc="Desain logo produk skincare & poster kegiatan, dibuat menggunakan Canva." data-image="https://images.unsplash.com/photo-1520975910687-9f6c8d3d6b3b?auto=format&fit=crop&w=800&q=60">
-          <img src="https://images.unsplash.com/photo-1520975910687-9f6c8d3d6b3b?auto=format&fit=crop&w=800&q=60" alt="">
-          <div class="project-body">
-            <h4>Desain Branding</h4>
-            <p class="muted">Logo & materi promosi untuk tugas PKK.</p>
-            <div class="project-tags"><span class="tag">Canva</span><span class="tag">Brand</span></div>
-          </div>
-        </div>
-
-        <!-- tambah project dummy lain jika perlu -->
-      </div>
-    </section>
-
-    <!-- SKILLS -->
-    <section id="skills" style="margin-top:18px">
-      <div class="section-title"><h3>Keterampilan</h3></div>
-      <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:10px">
-        <div class="card" style="flex:1;min-width:260px">
-          <h4 style="margin-bottom:8px">Teknis</h4>
-          <div class="skills">
-            <div class="skill-pill">HTML — 9/10</div>
-            <div class="skill-pill">CSS — 8/10</div>
-            <div class="skill-pill">PHP — 8/10</div>
-            <div class="skill-pill">Laravel (Dasar) — 9/10</div>
-            <div class="skill-pill">MySQL — 7/10</div>
-          </div>
-        </div>
-
-        <div class="card" style="flex:1;min-width:260px">
-          <h4 style="margin-bottom:8px">Desain & Lainnya</h4>
-          <div class="skills">
-            <div class="skill-pill">Canva — 10/10</div>
-            <div class="skill-pill">Komunikasi — Aktif</div>
-            <div class="skill-pill">Organisasi — Berpengalaman</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- EXPERIENCE -->
-    <section id="experience" style="margin-top:18px">
-      <div class="section-title"><h3>Pengalaman & Organisasi</h3></div>
-      <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:10px">
-        <div class="card" style="flex:1;min-width:260px">
-          <h4>Anggota OSIS — SMK INFORMATIKA UTAMA</h4>
-          <p class="muted">2024 - Sekarang</p>
-          <p class="muted" style="margin-top:8px">Aktif dalam kegiatan sekolah, membantu pengelolaan acara dan dokumentasi.</p>
-        </div>
-        <div class="card" style="flex:1;min-width:260px">
-          <h4>Bendahara Panitia 17 Agustus & Karang Taruna</h4>
-          <p class="muted">2023 - Sekarang</p>
-          <p class="muted" style="margin-top:8px">Bertanggung jawab atas administrasi dan laporan keuangan.</p>
-        </div>
-        <div class="card" style="flex:1;min-width:260px">
-          <h4>Ketua Paskibra — SMPN 21 DEPOK</h4>
-          <p class="muted">2022 - 2023</p>
-          <p class="muted" style="margin-top:8px">Mengorganisir latihan dan kompetisi baris-berbaris.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section id="contact" style="margin-top:18px">
-      <div class="section-title"><h3>Kontak</h3></div>
-      <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:10px">
-        <div class="card" style="flex:1;min-width:320px">
-          <h4>Info Kontak</h4>
-          <p class="muted" style="margin-top:8px">Alamat: Jalan Raya Krukut No.36, Krukut, Limo, Depok</p>
-          <p class="muted">Tel: 0857-7160-0670</p>
-          <p class="muted">Email: adinia112009@gmail.com</p>
-        </div>
-
-        <form class="card" style="flex:1;min-width:320px" id="contactForm" onsubmit="return false">
-          <label style="font-weight:700">Kirim Pesan</label>
-          <div class="contact-grid" style="margin-top:8px">
-            <input type="text" id="name" placeholder="Nama Lengkap" required>
-            <input type="email" id="email" placeholder="Email" required>
-          </div>
-          <textarea id="message" rows="5" placeholder="Pesan / Permintaan" style="margin-top:8px" required></textarea>
-          <div style="display:flex;gap:8px;margin-top:10px">
-            <button class="btn" id="sendBtn">Kirim</button>
-            <button class="btn secondary" id="clearBtn" type="button">Bersihkan</button>
-          </div>
-          <p id="formMsg" style="color:var(--muted);font-size:13px;margin-top:8px"></p>
-        </form>
-      </div>
-    </section>
-
-    <footer>
-      <p>&copy; 2025 — Adinia Rasya Putri • Semua hak cipta dilindungi.</p>
-    </footer>
-  </div>
-
-  <!-- Modal untuk detail project -->
-  <div class="modal" id="projectModal" role="dialog" aria-hidden="true">
-    <div class="modal-card" role="document">
-      <div style="display:flex;align-items:center;gap:12px">
-        <h3 id="modalTitle" style="margin:0">Judul Project</h3>
-        <button class="modal-close" id="closeModal" aria-label="Tutup">&times;</button>
-      </div>
-      <div class="modal-top" style="margin-top:12px">
-        <img id="modalImage" src="" alt="">
-        <div class="modal-body">
-          <h4 id="modalSub">Ringkasan</h4>
-          <p id="modalDesc" class="muted"></p>
-          <div id="modalTags" style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap"></div>
-          <div style="margin-top:12px">
-            <a id="modalLive" class="btn" href="#" target="_blank" style="display:none">Lihat Live</a>
-            <a id="modalCode" class="btn secondary" href="#" target="_blank" style="display:none">Lihat Kode</a>
-          </div>
-        </div>
+        <footer>
+          <p>&copy; 2025 • Adinia Rasya Putri — Situs Portofolio untuk Pengajuan PKL</p>
+        </footer>
       </div>
     </div>
   </div>
 
   <script>
-    // ===== Filter proyek =====
-    const filterBtns = document.querySelectorAll('.filter-btn');
-    const projectCards = document.querySelectorAll('.project-card');
+    // ====== Animasi progress bar saat terlihat ======
+    const bars = document.querySelectorAll('.progress > i');
+    const skillsSection = document.getElementById('skills');
 
-    filterBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        filterBtns.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        const f = btn.getAttribute('data-filter');
-        projectCards.forEach(card => {
-          if(f === 'all') card.style.display = '';
-          else {
-            const tags = card.getAttribute('data-tags') || '';
-            card.style.display = tags.includes(f) ? '' : 'none';
-          }
-        });
+    const animateBars = () => {
+      bars.forEach((b, idx) => {
+        const w = b.getAttribute('data-w') || 0;
+        setTimeout(() => b.style.width = w + '%', 120 * idx);
       });
-    });
+    };
 
-    // ===== Modal project detail =====
-    const modal = document.getElementById('projectModal');
-    const modalTitle = document.getElementById('modalTitle');
-    const modalImage = document.getElementById('modalImage');
-    const modalDesc = document.getElementById('modalDesc');
-    const modalTags = document.getElementById('modalTags');
-    const modalLive = document.getElementById('modalLive');
-    const modalCode = document.getElementById('modalCode');
-    const closeModal = document.getElementById('closeModal');
-
-    document.querySelectorAll('.project-card').forEach(card => {
-      card.addEventListener('click', () => {
-        const title = card.getAttribute('data-title');
-        const desc = card.getAttribute('data-desc');
-        const img = card.getAttribute('data-image');
-        const tags = (card.getAttribute('data-tags') || '').split(',');
-        modalTitle.textContent = title;
-        modalDesc.textContent = desc;
-        modalImage.src = img;
-        // tags
-        modalTags.innerHTML = '';
-        tags.forEach(t => {
-          if(t.trim()){
-            const el = document.createElement('span');
-            el.className = 'tag';
-            el.textContent = t.trim();
-            modalTags.appendChild(el);
-          }
-        });
-        // optional: data-live / data-code attributes (tidak wajib)
-        const live = card.getAttribute('data-live');
-        const code = card.getAttribute('data-code');
-        if(live){ modalLive.style.display='inline-flex'; modalLive.href = live } else modalLive.style.display='none';
-        if(code){ modalCode.style.display='inline-flex'; modalCode.href = code } else modalCode.style.display='none';
-
-        modal.classList.add('show');
-        modal.setAttribute('aria-hidden','false');
-        document.body.style.overflow = 'hidden';
-      });
-    });
-
-    closeModal.addEventListener('click', closeProjectModal);
-    modal.addEventListener('click', (e) => { if(e.target === modal) closeProjectModal() });
-    function closeProjectModal(){
-      modal.classList.remove('show');
-      modal.setAttribute('aria-hidden','true');
-      document.body.style.overflow = '';
-    }
-
-    // ===== Animasi in-view untuk gambar dan fade =====
-    const io = new IntersectionObserver((entries) => {
+    const io = new IntersectionObserver(entries => {
       entries.forEach(e => {
-        if(e.isIntersecting) e.target.style.transform = 'translateY(0)', e.target.style.opacity = 1;
+        if(e.isIntersecting) animateBars();
       });
-    }, {threshold:0.12});
-    document.querySelectorAll('.project-card').forEach(c => {
-      c.style.transform = 'translateY(12px)'; c.style.opacity = 0;
-      io.observe(c);
-    });
+    }, {threshold: 0.25});
 
-    // ===== Contact form (sederhana: tampilkan pesan & buka mailto) =====
-    const contactForm = document.getElementById('contactForm');
-    document.getElementById('sendBtn').addEventListener('click', () => {
-      const name = document.getElementById('name').value.trim();
-      const email = document.getElementById('email').value.trim();
-      const msg = document.getElementById('message').value.trim();
-      const formMsg = document.getElementById('formMsg');
-      if(!name || !email || !msg){ formMsg.textContent = 'Lengkapi semua kolom terlebih dahulu.'; return; }
-      formMsg.style.color = 'green';
-      formMsg.textContent = 'Terima kasih! Membuka email client...';
-      // buka mailto dengan isi
-      const subject = encodeURIComponent('Permintaan dari Portofolio: ' + name);
-      const body = encodeURIComponent('Nama: ' + name + '\\nEmail: ' + email + '\\n\\nPesan:\\n' + msg);
+    if(skillsSection) io.observe(skillsSection);
+
+    // ====== Form pengajuan magang (sederhana: open mailto dengan data terisi) ======
+    const submitApply = document.getElementById('submitApply');
+    const applyMsg = document.getElementById('applyMsg');
+
+    submitApply.addEventListener('click', () => {
+      const name = document.getElementById('appName').value.trim();
+      const email = document.getElementById('appEmail').value.trim();
+      const phone = document.getElementById('appPhone').value.trim();
+      const school = document.getElementById('appSchool').value.trim();
+      const msg = document.getElementById('appMsg').value.trim();
+
+      if(!name||!email||!phone||!school||!msg){
+        applyMsg.style.color='red'; applyMsg.textContent='Lengkapi semua kolom terlebih dahulu.';
+        return;
+      }
+
+      applyMsg.style.color='green'; applyMsg.textContent='Membuka aplikasi email untuk mengirim pengajuan...';
+
+      const subject = encodeURIComponent('Pengajuan Magang (PKL) - ' + name);
+      const body = encodeURIComponent(
+        'Nama: ' + name + '\\n' +
+        'Email: ' + email + '\\n' +
+        'Telepon: ' + phone + '\\n' +
+        'Sekolah/Jurusan: ' + school + '\\n\\n' +
+        'Pesan: ' + msg
+      );
+
+      // membuka email client
       window.location.href = `mailto:adinia112009@gmail.com?subject=${subject}&body=${body}`;
     });
-    document.getElementById('clearBtn').addEventListener('click', () => {
-      document.getElementById('name').value='';document.getElementById('email').value='';document.getElementById('message').value='';
-      document.getElementById('formMsg').textContent='';
+
+    document.getElementById('resetApply').addEventListener('click', () => {
+      document.getElementById('appName').value='';document.getElementById('appEmail').value='';document.getElementById('appPhone').value='';document.getElementById('appMsg').value='';
+      applyMsg.textContent='';
     });
 
-    // ===== Klik foto => instruksi ganti foto =====
-    document.getElementById('profilePhoto').addEventListener('click', () => {
-      alert('Ganti foto: letakkan file foto di folder proyek dan ubah atribut src pada tag <img id=\"profilePhoto\"> menjadi \"foto-saya.jpg\" atau URL foto Anda.');
-    });
-
-    // ===== Accessibility: open external safely =====
+    // ====== Accessibility: external links rel noopener ======
     document.querySelectorAll('a[target="_blank"]').forEach(a => a.setAttribute('rel','noopener noreferrer'));
 
-    // ===== Keyboard: close modal with Escape =====
-    window.addEventListener('keydown', (e) => { if(e.key === 'Escape') closeProjectModal() });
+    // ====== Click photo simple instruction ======
+    const hdrPhoto = document.getElementById('hdrPhoto');
+    hdrPhoto.addEventListener('click', () => {
+      alert('Untuk mengganti foto header: simpan file foto di folder yang sama dan ganti atribut src pada <img id=\"hdrPhoto\"> menjadi nama file atau URL foto Anda (contoh: header-photo.jpg).');
+    });
+
+    // ====== Small: smooth highlight on scroll for nav (visual aid) ======
+    const navLinks = document.querySelectorAll('nav a');
+    const sections = document.querySelectorAll('header, section, aside');
+    window.addEventListener('scroll', () => {
+      let current = '';
+      document.querySelectorAll('section, header').forEach(sec => {
+        const rect = sec.getBoundingClientRect();
+        if(rect.top <= 140) current = sec.id || 'home';
+      });
+      navLinks.forEach(a => a.classList.toggle('active', (a.getAttribute('href')||'').includes(current)));
+    });
   </script>
 </body>
 </html>
