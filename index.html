@@ -1,419 +1,587 @@
-<!DOCTYPE html>
+<!--
+  File: index.html
+  Petunjuk singkat:
+  1. Simpan file ini sebagai index.html dan buka di browser.
+  2. Ganti gambar profil:
+       - Letakkan foto kamu di folder yang sama dengan nama "foto-saya.jpg"
+       - Atau edit atribut src pada <img id="profilePhoto"> menjadi URL yang kamu mau.
+  3. Ganti link Instagram & GitHub:
+       - Cari elemen dengan class .social-link dan ubah atribut href ke:
+           Instagram: https://instagram.com/USERNAME
+           GitHub:    https://github.com/USERNAME
+  4. Untuk mengunduh CV sebagai PDF, klik tombol "Unduh CV" (fitur client-side sederhana).
+  5. Semua teks sudah terisi sesuai data yang kamu kirim.
+-->
+
+<!doctype html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portofolio Masud - Web Designer</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <style>
-        /*
-        ========================================
-        CSS STYLING
-        ========================================
-        */
-        :root {
-            --primary-color: #ff3366; /* Merah untuk aksen */
-            --secondary-color: #ffffff; /* Putih untuk teks */
-            --background-color: #1a1a2e; /* Biru gelap untuk latar belakang */
-            --text-color: #cccccc; /* Abu-abu terang untuk teks sekunder */
-        }
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Adinia Rasya Putri — Portofolio / CV</title>
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: Arial, sans-serif;
-        }
+  <!-- Icon library -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
 
-        body {
-            background-color: var(--background-color);
-            color: var(--secondary-color);
-            line-height: 1.6;
-            scroll-behavior: smooth;
-        }
+  <style>
+    :root{
+      --bg:#f7f9fb;         /* putih lembut */
+      --card:#ffffff;       /* kartu putih */
+      --muted:#6b7280;      /* abu-abu */
+      --accent:#0b63ff;     /* biru kuat */
+      --accent-2:#0f1724;   /* hitam kebiruan */
+      --glass: rgba(15,23,36,0.06);
+      --success:#10b981;
+      --danger:#ef4444;
+      --radius:14px;
+      --max-width:1100px;
+      --shadow: 0 8px 30px rgba(16,24,40,0.06);
+      --mono: 'Segoe UI', Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
 
-        a {
-            text-decoration: none;
-            color: var(--secondary-color);
-            transition: color 0.3s;
-        }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      font-family:var(--mono);
+      background:linear-gradient(180deg,var(--bg),#eef3fb);
+      color:#0f1724;
+      margin:0;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.45;
+      scroll-behavior:smooth;
+    }
 
-        a:hover {
-            color: var(--primary-color);
-        }
+    .container{
+      max-width:var(--max-width);
+      margin:40px auto;
+      padding:28px;
+    }
 
-        /*
-        ========================================
-        HEADER & NAVIGASI
-        ========================================
-        */
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 5%;
-            background-color: rgba(26, 26, 46, 0.9); /* Sedikit transparan */
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-        }
+    /* Header / Navbar */
+    header.site-header{
+      position:sticky;
+      top:18px;
+      z-index:60;
+      background:transparent;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      margin-bottom:18px;
+      gap:12px;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+    }
+    .logo-mark{
+      width:46px;height:46px;
+      border-radius:10px;
+      display:grid;
+      place-items:center;
+      background:linear-gradient(135deg,var(--accent),#66a1ff);
+      box-shadow: 0 6px 18px rgba(11,99,255,0.18);
+      color:white;
+      font-weight:700;
+      font-size:18px;
+      letter-spacing:0.6px;
+    }
+    .brand h1{font-size:18px;margin:0}
+    .brand p{font-size:12px;margin:0;color:var(--muted)}
 
-        .logo {
-            font-size: 24px;
-            font-weight: bold;
-            color: var(--secondary-color);
-            text-transform: uppercase;
-        }
+    nav.top-nav{display:flex; gap:12px; align-items:center}
+    nav.top-nav a{
+      font-size:13px;
+      color:var(--accent-2);
+      padding:8px 12px;
+      border-radius:10px;
+      text-decoration:none;
+    }
+    nav.top-nav a:hover{background:var(--glass)}
 
-        .navbar a {
-            margin-left: 30px;
-            font-size: 16px;
-            font-weight: 500;
-            text-transform: uppercase;
-        }
+    /* Grid utama: kiri profil, kanan konten */
+    .layout{
+      display:grid;
+      grid-template-columns: 320px 1fr;
+      gap:28px;
+      align-items:start;
+    }
 
-        /*
-        ========================================
-        HOME SECTION
-        ========================================
-        */
-        .home {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            padding: 0 5%;
-            padding-top: 80px; /* Jarak dari header fixed */
-        }
+    /* KIRI: kartu profil */
+    .card{
+      background:var(--card);
+      border-radius:var(--radius);
+      padding:22px;
+      box-shadow:var(--shadow);
+      overflow:hidden;
+    }
 
-        .home-content {
-            display: flex;
-            align-items: center;
-            width: 100%;
-            max-width: 1200px;
-            margin: auto;
-        }
+    .photo-frame{
+      width:100%;
+      height:320px;
+      border-radius:12px;
+      background:
+        linear-gradient(180deg, rgba(11,99,255,0.06), rgba(0,0,0,0.02)),
+        linear-gradient(135deg, rgba(11,99,255,0.14), rgba(102,161,255,0.08));
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      position:relative;
+      overflow:hidden;
+      border:1px solid rgba(11,99,255,0.06);
+    }
 
-        .text-content {
-            flex: 1;
-            padding-right: 50px;
-        }
+    /* Bingkai foto estetis */
+    .photo-frame::before{
+      content:"";
+      position:absolute;
+      inset: -40% -20% auto auto;
+      width:160%;
+      height:60%;
+      background:radial-gradient(closest-side, rgba(11,99,255,0.06), transparent 60%);
+      transform:rotate(-20deg);
+      filter:blur(26px);
+      pointer-events:none;
+    }
 
-        .text-content h4 {
-            color: var(--primary-color);
-            font-size: 18px;
-            margin-bottom: 10px;
-            letter-spacing: 2px;
-        }
+    #profilePhoto{
+      width:210px;
+      height:210px;
+      object-fit:cover;
+      border-radius:50%;
+      border:8px solid #fff;
+      box-shadow: 0 8px 28px rgba(11,99,255,0.12);
+      transition:transform .45s cubic-bezier(.2,.9,.3,1);
+    }
+    .photo-frame:hover #profilePhoto{ transform: translateY(-6px) scale(1.02) }
 
-        .text-content h1 {
-            font-size: 48px;
-            margin-bottom: 20px;
-            border-left: 5px solid var(--primary-color);
-            padding-left: 15px;
-            line-height: 1.2;
-        }
+    .meta{
+      margin-top:14px;
+    }
+    .meta h2{margin:8px 0 2px;font-size:20px}
+    .meta p{margin:0;color:var(--muted);font-size:13px}
 
-        .text-content p {
-            color: var(--text-color);
-            margin-bottom: 30px;
-            max-width: 500px;
-        }
+    .contact-list{margin-top:14px; display:grid; gap:8px}
+    .contact-list li{
+      list-style:none;
+      padding:10px;
+      border-radius:10px;
+      background:linear-gradient(180deg, rgba(15,23,36,0.03), rgba(250,250,250,0.6));
+      font-size:13px;
+      display:flex; gap:10px; align-items:center;
+      color:#0f1724;
+    }
+    .contact-list li i{width:18px;text-align:center;color:var(--accent)}
 
-        .social-icons a {
-            display: inline-block;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.1);
-            color: var(--secondary-color);
-            text-align: center;
-            line-height: 40px;
-            margin-right: 15px;
-            transition: background 0.3s;
-        }
+    .social-row{display:flex; gap:8px; margin-top:14px}
+    .social-row a{
+      display:inline-grid;
+      place-items:center;
+      width:44px;height:44px;border-radius:10px;
+      background:linear-gradient(180deg,#fff, #f1f5f9);
+      color:var(--accent-2);
+      text-decoration:none;
+      box-shadow: 0 6px 18px rgba(2,6,23,0.06);
+      transition:transform .18s;
+    }
+    .social-row a:hover{ transform: translateY(-4px) }
 
-        .social-icons a:hover {
-            background: var(--primary-color);
-        }
+    .download-btn{
+      margin-top:16px;
+      display:inline-block;
+      padding:10px 14px;
+      border-radius:10px;
+      background:linear-gradient(90deg,var(--accent),#5aa0ff);
+      color:white;
+      text-decoration:none;
+      font-weight:600;
+      cursor:pointer;
+      box-shadow: 0 8px 24px rgba(11,99,255,0.18);
+      border:none;
+    }
 
-        .image-content {
-            flex: 1;
-            text-align: right;
-        }
+    /* KANAN: konten */
+    .content-column{display:flex; flex-direction:column; gap:18px}
 
-        .image-content img {
-            max-width: 90%;
-            height: auto;
-            border-radius: 8px; /* Jika ingin sudut melengkung */
-        }
+    .section{
+      background:var(--card);
+      border-radius:12px;
+      padding:18px;
+      box-shadow:var(--shadow);
+    }
+    .section h3{ margin:0 0 8px; color:var(--accent-2) }
+    .muted{ color:var(--muted); font-size:14px }
 
-        .image-content h3 {
-            margin-top: 20px;
-            font-size: 22px;
-        }
+    /* pendidikan & timeline */
+    .timeline{ display:flex; flex-direction:column; gap:12px; margin-top:8px }
+    .item{
+      display:flex; gap:14px; align-items:flex-start;
+    }
+    .item .dot{
+      width:12px;height:12px;border-radius:50%; background:var(--accent);
+      margin-top:6px;
+      box-shadow:0 4px 12px rgba(11,99,255,0.14);
+    }
+    .item .body{flex:1}
+    .item .body h4{margin:0 0 4px;font-size:15px}
+    .item .body p{margin:0;color:var(--muted);font-size:13px}
 
-        /*
-        ========================================
-        GENERAL SECTION STYLING
-        ========================================
-        */
-        section {
-            padding: 100px 5%;
-            max-width: 1200px;
-            margin: auto;
-        }
+    /* skill bars - custom modern */
+    .skills-grid{ display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap:12px; margin-top:8px }
+    .skill{
+      padding:12px; border-radius:10px; background:var(--glass); display:flex; flex-direction:column; gap:8px;
+    }
+    .skill .label{display:flex; justify-content:space-between; font-weight:600; font-size:13px}
+    .bar{
+      width:100%; height:10px; background:rgba(15,23,36,0.06); border-radius:999px; overflow:hidden;
+    }
+    .bar > i{
+      display:block;
+      height:100%;
+      border-radius:999px;
+      width:0%;
+      background: linear-gradient(90deg,var(--accent),#66a1ff);
+      transition: width 1.2s cubic-bezier(.2,.9,.3,1);
+      box-shadow: 0 6px 18px rgba(11,99,255,0.12);
+    }
 
-        .heading {
-            text-align: center;
-            margin-bottom: 50px;
-        }
+    /* progress circles (fancy) */
+    .circles{ display:flex; gap:14px; align-items:center; justify-content:flex-start }
+    .circle{
+      width:96px;height:96px;border-radius:50%;
+      background:conic-gradient(var(--accent) 0deg, var(--glass) 0deg);
+      display:grid; place-items:center; position:relative;
+      box-shadow: 0 8px 20px rgba(11,99,255,0.08);
+    }
+    .circle .inner{
+      width:78px;height:78px;border-radius:50%; background:var(--card); display:grid;place-items:center;
+      font-weight:700;
+    }
+    .circle small{ position:absolute; bottom:8px; font-size:11px; color:var(--muted); }
 
-        .heading h2 {
-            font-size: 36px;
-            text-transform: uppercase;
-            color: var(--primary-color);
-        }
+    /* experience & achievements */
+    .list-row{ display:flex; flex-direction:column; gap:10px }
+    .list-row .card-mini{
+      background:linear-gradient(180deg,#fff,#f7fafc);
+      padding:12px;border-radius:10px;border:1px solid rgba(2,6,23,0.03)
+    }
+    .badge{ display:inline-block; padding:6px 8px; border-radius:8px; font-size:12px; font-weight:700; background:rgba(11,99,255,0.12); color:var(--accent-2) }
 
-        .heading p {
-            color: var(--text-color);
-            margin-top: 10px;
-        }
+    /* footer */
+    footer{ text-align:center; margin-top:20px; color:var(--muted); font-size:13px }
 
-        /* Contoh style untuk Service Section */
-        .service-container {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-        }
-
-        .service-box {
-            background: #2a2a44;
-            padding: 30px;
-            border-radius: 10px;
-            width: 30%;
-            margin-bottom: 20px;
-            text-align: center;
-        }
-
-        .service-box i {
-            font-size: 40px;
-            color: var(--primary-color);
-            margin-bottom: 15px;
-        }
-
-        .service-box h3 {
-            margin-bottom: 10px;
-        }
-
-        /*
-        ========================================
-        RESPONSIVENESS (Opsional)
-        ========================================
-        */
-        @media (max-width: 992px) {
-            .header {
-                padding: 20px 3%;
-            }
-            .navbar a {
-                margin-left: 20px;
-            }
-            .home-content {
-                flex-direction: column;
-                text-align: center;
-                padding-top: 50px;
-            }
-            .text-content, .image-content {
-                padding-right: 0;
-            }
-            .image-content {
-                order: -1; /* Pindah gambar ke atas */
-                margin-bottom: 40px;
-            }
-            .image-content img {
-                max-width: 60%;
-            }
-            .service-box {
-                width: 45%;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .navbar {
-                display: none; /* Sembunyikan Navigasi, ganti dengan menu burger (tidak dibuat di kerangka ini) */
-            }
-            .text-content h1 {
-                font-size: 36px;
-            }
-            .service-box {
-                width: 100%;
-            }
-        }
-    </style>
+    /* responsive */
+    @media (max-width:980px){
+      .layout{ grid-template-columns: 1fr; }
+      .photo-frame{ height:280px }
+      #profilePhoto{ width:170px;height:170px }
+    }
+  </style>
 </head>
 <body>
+  <div class="container">
 
-    <header class="header">
-        <a href="#home" class="logo">MASUD</a>
-        <nav class="navbar">
-            <a href="#home">HOME</a>
-            <a href="#about">ABOUT</a>
-            <a href="#service">SERVICE</a>
-            <a href="#portofolio">PORTOFOLIO</a>
-            <a href="#blog">BLOG</a>
-            <a href="#contact">CONTACT</a>
-        </nav>
+    <header class="site-header">
+      <div class="brand">
+        <div class="logo-mark">AR</div>
+        <div>
+          <h1>Adinia Rasya Putri</h1>
+          <p>SMK — Rekayasa Perangkat Lunak</p>
+        </div>
+      </div>
+
+      <nav class="top-nav" aria-label="Navigasi utama">
+        <a href="#home">Home</a>
+        <a href="#about">Tentang</a>
+        <a href="#education">Pendidikan</a>
+        <a href="#skills">Keterampilan</a>
+        <a href="#experience">Pengalaman</a>
+        <a href="#achieve">Prestasi</a>
+        <a href="#contact">Kontak</a>
+      </nav>
     </header>
 
-    <section class="home" id="home">
-        <div class="home-content">
-            <div class="text-content">
-                <h4>WELCOME!</h4>
-                <h1>I Am <span style="color: var(--primary-color);">Web Designer</span></h1>
-                <p>
-                    I'm a Web Developer with extensive experience over 5 years. My expertise is in front-end and back-end design, graphic design, and many more...
-                    </p>
-                <div class="social-icons">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
+    <main class="layout">
+
+      <!-- KIRI: Profil utama -->
+      <aside class="card" id="home">
+        <div class="photo-frame" title="Klik foto untuk ganti (opsional)">
+          <!-- Ganti src ke 'foto-saya.jpg' atau URL foto kamu -->
+          <img id="profilePhoto" src="foto-saya.jpg" alt="Foto Adinia Rasya Putri">
+        </div>
+
+        <div class="meta">
+          <h2>Adinia Rasya Putri</h2>
+          <p class="muted">Siswa SMK — Rekayasa Perangkat Lunak</p>
+
+          <ul class="contact-list" aria-label="Kontak">
+            <li><i class="fa fa-phone"></i> <span>0857-7160-0670</span></li>
+            <li><i class="fa fa-envelope"></i> <span>adinia112009@gmail.com</span></li>
+            <li><i class="fa fa-map-marker-alt"></i> <span>Jalan Raya Krukut No.36, Krukut, Limo, Depok</span></li>
+          </ul>
+
+          <div class="social-row" aria-hidden="false" style="margin-top:12px">
+            <!-- Ganti href ke: https://instagram.com/USERNAME dan https://github.com/USERNAME -->
+            <a class="social-link" href="https://instagram.com/username" target="_blank" title="Instagram" aria-label="Instagram">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a class="social-link" href="https://github.com/username" target="_blank" title="GitHub" aria-label="GitHub">
+              <i class="fab fa-github"></i>
+            </a>
+            <a class="social-link" href="mailto:adinia112009@gmail.com" title="Email">
+              <i class="fa fa-envelope"></i>
+            </a>
+          </div>
+
+          <button class="download-btn" id="downloadCV" title="Unduh CV">Unduh CV</button>
+        </div>
+      </aside>
+
+      <!-- KANAN: Konten -->
+      <section class="content-column">
+
+        <!-- ABOUT -->
+        <article class="section" id="about">
+          <h3>Tentang Saya</h3>
+          <p class="muted">
+            Saya merupakan siswa SMK jurusan Rekayasa Perangkat Lunak yang memiliki antusiasme tinggi terhadap teknologi informasi dan pengembangan perangkat lunak.
+            Memiliki pemahaman dasar mengenai konsep pemrograman dan proses pengembangan perangkat lunak. Kreatif, komunikatif, dan mampu bekerja dalam tim.
+          </p>
+        </article>
+
+        <!-- EDUCATION -->
+        <article class="section" id="education">
+          <h3>Pendidikan</h3>
+          <div class="timeline">
+            <div class="item">
+              <div class="dot"></div>
+              <div class="body">
+                <h4>SDN Krukut 1</h4>
+                <p class="muted">2015 - 2021</p>
+              </div>
             </div>
-            <div class="image-content">
-                <img src="portofolio.jpg" alt="Masud Iqbal - Web Designer">
-                <h3>Hello, I Am Masud Iqbal</h3>
+
+            <div class="item">
+              <div class="dot"></div>
+              <div class="body">
+                <h4>SMPN 21 DEPOK</h4>
+                <p class="muted">2021 - 2024 — Meraih peringkat 1 dari 40 siswa di kelas 9</p>
+              </div>
+            </div>
+
+            <div class="item">
+              <div class="dot"></div>
+              <div class="body">
+                <h4>SMK INFORMATIKA UTAMA</h4>
+                <p class="muted">2024 - Sekarang — Jurusan Rekayasa Perangkat Lunak</p>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- SKILLS -->
+        <article class="section" id="skills">
+          <h3>Keterampilan</h3>
+          <p class="muted">Skill utamanya ditampilkan dengan progres animatif.</p>
+
+          <div style="display:flex; gap:18px; align-items:center; margin-top:10px; flex-wrap:wrap">
+            <div class="skills-grid" style="flex:1; min-width:240px">
+              <div class="skill">
+                <div class="label"><span>HTML</span><span>9/10</span></div>
+                <div class="bar"><i data-width="90"></i></div>
+              </div>
+              <div class="skill">
+                <div class="label"><span>CSS</span><span>8/10</span></div>
+                <div class="bar"><i data-width="80"></i></div>
+              </div>
+              <div class="skill">
+                <div class="label"><span>Laravel (Dasar)</span><span>9/10</span></div>
+                <div class="bar"><i data-width="90"></i></div>
+              </div>
+              <div class="skill">
+                <div class="label"><span>MySQL</span><span>7/10</span></div>
+                <div class="bar"><i data-width="70"></i></div>
+              </div>
+              <div class="skill">
+                <div class="label"><span>CANVA</span><span>10/10</span></div>
+                <div class="bar"><i data-width="100"></i></div>
+              </div>
+              <div class="skill">
+                <div class="label"><span>PHP</span><span>8/10</span></div>
+                <div class="bar"><i data-width="80"></i></div>
+              </div>
+            </div>
+
+            <div style="min-width:180px">
+              <div class="circles">
+                <div class="circle" data-percent="90" title="HTML">
+                  <div class="inner">90%</div>
+                  <small>HTML</small>
                 </div>
-        </div>
-    </section>
-
-    <section class="about" id="about">
-        <div class="heading">
-            <h2>ABOUT ME</h2>
-            <p>Get to know more about my background and skills.</p>
-        </div>
-        <div class="about-content">
-            <p style="color: var(--text-color);">
-                Saya adalah seorang pengembang web profesional yang berfokus pada pengalaman pengguna yang intuitif dan desain yang responsif.
-                Saya ahli dalam HTML5, CSS3, JavaScript modern, dan framework seperti React/Vue (ganti sesuai keahlian Anda).
-                Tujuan saya adalah mengubah ide kompleks menjadi solusi digital yang indah dan fungsional.
-            </p>
-            </div>
-    </section>
-
-    <section class="service" id="service">
-        <div class="heading">
-            <h2>MY SERVICES</h2>
-            <p>Layanan yang saya tawarkan kepada klien.</p>
-        </div>
-        <div class="service-container">
-            <div class="service-box">
-                <i class="fas fa-paint-brush"></i>
-                <h3>Web Design</h3>
-                <p>Menciptakan desain antarmuka yang menarik dan berpusat pada pengguna.</p>
-            </div>
-            <div class="service-box">
-                <i class="fas fa-code"></i>
-                <h3>Web Development</h3>
-                <p>Membangun situs web yang fungsional, cepat, dan responsif.</p>
-            </div>
-            <div class="service-box">
-                <i class="fas fa-mobile-alt"></i>
-                <h3>Responsive Layout</h3>
-                <p>Memastikan situs web terlihat sempurna di semua perangkat (mobile, tablet, desktop).</p>
-            </div>
-            </div>
-    </section>
-
-    <section class="portofolio" id="portofolio">
-        <div class="heading">
-            <h2>MY PORTOFOLIO</h2>
-            <p>Kumpulan proyek terbaik yang telah saya selesaikan.</p>
-        </div>
-        <div class="portofolio-container" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px;">
-            <div class="portofolio-item" style="background: #333; padding: 20px; border-radius: 8px;">
-                <h3 style="color: var(--primary-color);">Proyek E-Commerce</h3>
-                <p style="color: var(--text-color);">Desain dan pengembangan toko online dengan sistem pembayaran terintegrasi.</p>
+                <div class="circle" data-percent="80" title="CSS">
+                  <div class="inner">80%</div>
+                  <small>CSS</small>
                 </div>
-            <div class="portofolio-item" style="background: #333; padding: 20px; border-radius: 8px;">
-                <h3 style="color: var(--primary-color);">Website Perusahaan</h3>
-                <p style="color: var(--text-color);">Mengembangkan situs korporat yang profesional dan informatif.</p>
+                <div class="circle" data-percent="100" title="CANVA">
+                  <div class="inner">100%</div>
+                  <small>CANVA</small>
+                </div>
+              </div>
             </div>
-            <div class="portofolio-item" style="background: #333; padding: 20px; border-radius: 8px;">
-                <h3 style="color: var(--primary-color);">Aplikasi Mobile Hybrid</h3>
-                <p style="color: var(--text-color);">Membangun aplikasi yang dapat dijalankan di Android dan iOS.</p>
+          </div>
+
+        </article>
+
+        <!-- EXPERIENCE -->
+        <article class="section" id="experience">
+          <h3>Pengalaman & Organisasi</h3>
+          <div class="list-row" style="margin-top:10px">
+            <div class="card-mini">
+              <strong>Junior Web Developer</strong>
+              <div class="muted">Kegiatan pengembangan website statis & project POS sederhana</div>
             </div>
+
+            <div class="card-mini">
+              <strong>Anggota OSIS — SMK INFORMATIKA UTAMA</strong>
+              <div class="muted">2024 - Sekarang</div>
             </div>
-    </section>
 
-    <section class="blog" id="blog">
-        <div class="heading">
-            <h2>BLOG & INSIGHTS</h2>
-            <p>Artikel terbaru seputar teknologi dan desain web.</p>
-        </div>
-        <p style="text-align: center; color: var(--text-color);">
-            (Area ini akan diisi dengan daftar atau preview artikel blog Anda.)
-        </p>
-    </section>
+            <div class="card-mini">
+              <strong>Bendahara Panitia 17 Agustus & Karang Taruna (RT001/006)</strong>
+              <div class="muted">2023 - Sekarang</div>
+            </div>
+          </div>
+        </article>
 
-    <section class="contact" id="contact">
-        <div class="heading">
-            <h2>CONTACT ME</h2>
-            <p>Mari bekerja sama. Hubungi saya melalui formulir di bawah ini.</p>
-        </div>
-        <form style="max-width: 600px; margin: 0 auto; padding: 20px; background: #2a2a44; border-radius: 10px;">
-            <input type="text" placeholder="Nama Lengkap" required style="width: 100%; padding: 12px; margin-bottom: 15px; border: none; border-radius: 5px; background: #1a1a2e; color: var(--secondary-color);">
-            <input type="email" placeholder="Alamat Email" required style="width: 100%; padding: 12px; margin-bottom: 15px; border: none; border-radius: 5px; background: #1a1a2e; color: var(--secondary-color);">
-            <textarea placeholder="Pesan Anda" rows="6" required style="width: 100%; padding: 12px; margin-bottom: 15px; border: none; border-radius: 5px; background: #1a1a2e; color: var(--secondary-color);"></textarea>
-            <button type="submit" style="background: var(--primary-color); color: var(--secondary-color); padding: 12px 20px; border: none; border-radius: 5px; cursor: pointer; transition: background 0.3s;">Kirim Pesan</button>
-        </form>
-    </section>
+        <!-- ACHIEVEMENTS -->
+        <article class="section" id="achieve">
+          <h3>Prestasi</h3>
+          <div style="margin-top:8px">
+            <div class="item">
+              <div class="dot"></div>
+              <div class="body">
+                <h4>Ketua Paskibra SMPN 21 DEPOK</h4>
+                <p class="muted">2022 - 2023 — Aktif mengikuti event Paskibra & meraih beberapa juara</p>
+              </div>
+            </div>
 
-    <footer style="text-align: center; padding: 20px 0; background-color: #11111d; color: var(--text-color);">
-        <p>&copy; 2025 Masud Iqbal. All Rights Reserved.</p>
-        </footer>
+            <div class="item" style="margin-top:8px">
+              <div class="dot"></div>
+              <div class="body">
+                <h4>Juara KIR & Pengalaman Kompetisi</h4>
+                <p class="muted">Pernah mengikuti lomba Karya Ilmiah Remaja (KIR) tingkat internasional di Universitas Pancasila</p>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- CONTACT -->
+        <article class="section" id="contact">
+          <h3>Kontak</h3>
+          <p class="muted">Silakan hubungi saya untuk kerja praktik, magang, atau kolaborasi projek.</p>
+
+          <div style="display:flex; gap:12px; margin-top:10px; flex-wrap:wrap">
+            <a class="download-btn" id="contactEmail" href="mailto:adinia112009@gmail.com"><i class="fa fa-envelope"></i>&nbsp;&nbsp;Email</a>
+            <a class="download-btn" href="tel:085771600670"><i class="fa fa-phone"></i>&nbsp;&nbsp;Telepon</a>
+            <button class="download-btn" id="printView"><i class="fa fa-print"></i>&nbsp;&nbsp;Cetak Halaman</button>
+          </div>
+        </article>
+
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2025 Adinia Rasya Putri — All rights reserved.</p>
+    </footer>
+  </div>
+
+  <!-- JavaScript: Animasi skill, progress circle, interaksi, unduh sederhana -->
+  <script>
+    // ====== Interaksi: aktifkan progress bars saat terlihat ======
+    const bars = document.querySelectorAll('.bar > i');
+    const circles = document.querySelectorAll('.circle');
+
+    const animateBars = () => {
+      bars.forEach(b => {
+        const w = b.getAttribute('data-width') || 0;
+        // beri delay sedikit antar bar
+        setTimeout(()=> b.style.width = w + '%', 180);
+      });
+    };
+
+    // Konversi angka ke derajat untuk conic-gradient
+    const setCircleProgress = (el, pct) => {
+      const deg = (pct/100) * 360;
+      el.style.background = `conic-gradient(var(--accent) 0deg, var(--accent) ${deg}deg, rgba(15,23,36,0.04) ${deg}deg)`;
+      el.querySelector('.inner').textContent = pct + '%';
+    };
+
+    // Observed apakah elemen terlihat
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          animateBars();
+          circles.forEach(c => setCircleProgress(c, c.getAttribute('data-percent') || 0));
+        }
+      });
+    }, {threshold:0.25});
+
+    io.observe(document.querySelector('#skills'));
 
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const sections = document.querySelectorAll('section');
-            const navLinks = document.querySelectorAll('.navbar a');
+    // ====== Smooth active nav highlight ======
+    const navLinks = document.querySelectorAll('nav.top-nav a');
+    const sections = document.querySelectorAll('main .section, aside.card');
 
-            window.onscroll = () => {
-                let current = '';
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(sec => {
+        const top = sec.getBoundingClientRect().top;
+        if(top <= 120) current = sec.id || 'home';
+      });
+      navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href').includes(current)));
+    });
 
-                sections.forEach(section => {
-                    const sectionTop = section.offsetTop - 80; // Sesuaikan dengan tinggi header
-                    const sectionHeight = section.clientHeight;
-                    const scrollY = window.scrollY;
+    // ====== Klik foto -> buka dialog ganti file (saran) ======
+    const profilePhoto = document.getElementById('profilePhoto');
+    profilePhoto.addEventListener('click', () => {
+      alert('Untuk mengganti foto: simpan file foto kamu dalam folder proyek dengan nama "foto-saya.jpg" atau edit atribut src pada tag <img id="profilePhoto"> di file index.html.');
+    });
 
-                    if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
-                        current = section.getAttribute('id');
-                    }
-                });
+    // ====== Tombol Unduh CV: generate simple printable layout (client-side) ======
+    document.getElementById('downloadCV').addEventListener('click', async () => {
+      // Sederhana: buka window print-friendly
+      const printWindow = window.open('', '_blank', 'width=900,height=700');
+      const content = document.querySelector('main').outerHTML;
+      const style = `
+        <style>
+          body{font-family:Arial, sans-serif;color:#111}
+          .container{max-width:800px;margin:20px auto;padding:14px}
+          h1,h3{color:#0b63ff}
+          .profile{display:flex;gap:14px}
+          img{width:120px;height:120px;object-fit:cover;border-radius:60px}
+        </style>`;
+      printWindow.document.write('<html><head><title>CV - '+document.querySelector('.brand h1').textContent+'</title>'+style+'</head><body>');
+      printWindow.document.write('<div class="container">');
+      printWindow.document.write('<h1>'+document.querySelector('.brand h1').textContent+'</h1>');
+      printWindow.document.write(content);
+      printWindow.document.write('</div>');
+      printWindow.document.write('</body></html>');
+      printWindow.document.close();
+      setTimeout(()=> printWindow.print(), 700);
+    });
 
-                navLinks.forEach(link => {
-                    link.classList.remove('active');
-                    if (link.getAttribute('href').includes(current)) {
-                        link.classList.add('active');
-                    }
-                });
-            };
+    // ====== Tombol Cetak Halaman ======
+    document.getElementById('printView').addEventListener('click', () => window.print());
 
-            // Menambahkan style 'active' saat link diklik (opsional)
-            navLinks.forEach(link => {
-                link.addEventListener('click', function() {
-                    navLinks.forEach(l => l.classList.remove('active'));
-                    this.classList.add('active');
-                });
-            });
+    // ====== Small: open social links in new tab (for keyboard nav) ======
+    document.querySelectorAll('.social-row a').forEach(a => {
+      a.addEventListener('keydown', (e) => { if(e.key === 'Enter') window.open(a.href,'_blank') });
+    });
 
-            // Tambahkan style untuk link aktif
-            const style = document.createElement('style');
-            style.textContent = '.navbar a.active { color: var(--primary-color) !important; }';
-            document.head.appendChild(style);
-        });
-    </script>
-
+    // ====== Accessibility: external links open new tab with rel noopener ======
+    document.querySelectorAll('a[target="_blank"]').forEach(a => a.setAttribute('rel','noopener noreferrer'));
+  </script>
 </body>
 </html>
