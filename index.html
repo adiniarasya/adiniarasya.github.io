@@ -1,44 +1,343 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Portfolio — Adinia Rasya Putri</title>
-  <meta name="description" content="Portfolio pribadi — Adinia Rasya Putri" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio Adinia Rasya Putri</title>
   <style>
-    :root{
-      --blue-50:#eaf4ff;
-      --blue-400:#2b8cff;
-      --blue-600:#0b63d4;
-      --navy:#0b2a4a;
-      --muted:#7a8aa6;
-      --card-shadow:0 8px 24px rgba(11,38,77,0.08);
-      --radius:14px;
-      font-family:'Poppins',sans-serif;
+    :root {
+      --blue: #1e88e5;
+      --light-blue: #e3f2fd;
+      --dark-blue: #0d47a1;
+      --text: #0b2a4a;
+      --shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
     }
-    *{box-sizing:border-box;margin:0;padding:0}
-    body{background:linear-gradient(180deg,var(--blue-50),white 55%);color:var(--navy);}
-    .wrap{max-width:1100px;margin:40px auto;padding:24px}
 
-    header{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}
-    .logo{font-size:26px;font-weight:700;color:var(--blue-600)}
-    .nav{display:flex;gap:16px}
-    .nav a{text-decoration:none;color:var(--navy);font-weight:600;transition:0.3s}
-    .nav a:hover{color:var(--blue-600)}
-    .nav a.cta{background:var(--blue-400);color:#fff;padding:8px 14px;border-radius:8px}
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
 
-    .hero{margin-top:40px;text-align:center}
-    .hero h1{font-size:32px;margin-bottom:8px}
-    .hero p{color:var(--muted)}
+    body {
+      background: linear-gradient(180deg, var(--light-blue), #fff 60%);
+      color: var(--text);
+    }
 
-    /* Profil Section */
-    #profile{margin-top:40px;display:flex;align-items:center;flex-wrap:wrap;gap:24px;justify-content:center}
-    .profile-card{background:#fff;box-shadow:var(--card-shadow);border-radius:20px;padding:24px;max-width:700px;width:100%;display:flex;align-items:center;gap:24px;flex-wrap:wrap}
-    .profile-photo{width:180px;height:180px;border-radius:50%;overflow:hidden;box-shadow:0 4px 12px rgba(0,0,0,0.1);position:relative}
-    .profile-photo img{width:100%;height:100%;object-fit:cover}
-    .upload-btn{margin-top:8px;text-align:center}
-    .upload-btn input{display:none}
-    .upload-btn label{background:var(--blue-400);color:#fff;padding:6px 12px;border-radius:8px;cursor:pointer;font-size:13px}
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 60px;
+      background: white;
+      box-shadow: var(--shadow);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
 
-    .profile-info h2{font-size:22px;margin-bottom:6px;color:var(--blue-600)}
-    .profile-info p{margin-bottom:
+    .logo {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--blue);
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--text);
+      margin: 0 10px;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: var(--blue);
+    }
+
+    .hero {
+      text-align: center;
+      padding: 60px 20px 40px;
+    }
+
+    .hero h1 {
+      font-size: 32px;
+      color: var(--blue);
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      color: #555;
+    }
+
+    /* Profil */
+    .profile-section {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 40px;
+      background: #fff;
+      box-shadow: var(--shadow);
+      border-radius: 20px;
+      padding: 30px;
+      margin: 40px auto;
+      max-width: 900px;
+    }
+
+    .profile-photo {
+      text-align: center;
+    }
+
+    .profile-photo img {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: var(--shadow);
+    }
+
+    .upload-btn {
+      margin-top: 10px;
+    }
+
+    .upload-btn label {
+      background: var(--blue);
+      color: #fff;
+      padding: 8px 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: 0.3s;
+    }
+
+    .upload-btn label:hover {
+      background: var(--dark-blue);
+    }
+
+    .profile-info h2 {
+      color: var(--dark-blue);
+      margin-bottom: 6px;
+    }
+
+    .profile-info p {
+      margin-bottom: 4px;
+    }
+
+    .profile-info .desc {
+      margin-top: 10px;
+      color: #555;
+      max-width: 400px;
+    }
+
+    /* Projects */
+    #projects {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 20px;
+    }
+
+    #projects h2 {
+      text-align: center;
+      color: var(--blue);
+      margin-bottom: 20px;
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+
+    .project {
+      background: #fff;
+      border-radius: 14px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      transition: 0.3s;
+    }
+
+    .project:hover {
+      transform: translateY(-5px);
+    }
+
+    .project img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+    }
+
+    .project .meta {
+      padding: 10px 14px;
+      color: var(--blue);
+      font-weight: 600;
+    }
+
+    /* Certificate */
+    #certs {
+      max-width: 1000px;
+      margin: 40px auto;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .cert-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .cert {
+      width: 240px;
+      height: 160px;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .cert img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Contact */
+    #contact {
+      max-width: 700px;
+      margin: 40px auto;
+      background: white;
+      box-shadow: var(--shadow);
+      border-radius: 14px;
+      padding: 20px;
+      text-align: center;
+    }
+
+    #contact h2 {
+      color: var(--blue);
+      margin-bottom: 14px;
+    }
+
+    form {
+      display: grid;
+      gap: 10px;
+    }
+
+    input, textarea {
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 14px;
+    }
+
+    button {
+      background: var(--blue);
+      color: white;
+      padding: 10px;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: var(--dark-blue);
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">Adinia Rasya Putri</div>
+    <nav>
+      <a href="#profile">Profil</a>
+      <a href="#projects">Proyek</a>
+      <a href="#certs">Sertifikat</a>
+      <a href="#contact">Kontak</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h1>Selamat Datang di Portofolio Saya 💙</h1>
+    <p>Saya siswi SMK Informatika Utama jurusan Rekayasa Perangkat Lunak (PPLG)</p>
+  </section>
+
+  <section id="profile" class="profile-section">
+    <div class="profile-photo">
+      <img id="profileImg" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=800" alt="Foto Profil">
+      <div class="upload-btn">
+        <input type="file" id="photoInput" accept="image/*" style="display:none;">
+        <label for="photoInput">Pilih Foto</label>
+      </div>
+    </div>
+    <div class="profile-info">
+      <h2>Adinia Rasya Putri</h2>
+      <p><strong>Tempat, Tanggal Lahir:</strong> Jakarta, 19 Maret 2009</p>
+      <p><strong>Pendidikan:</strong> SMK Informatika Utama - PPLG</p>
+      <p><strong>Hobi:</strong> Membaca</p>
+      <p class="desc">Saya adalah siswi SMK Informatika Utama yang bersemangat di bidang pengembangan perangkat lunak, desain web, dan teknologi. Saya senang mempelajari hal-hal baru dan terus mengasah kemampuan saya di dunia digital.</p>
+    </div>
+  </section>
+
+  <section id="projects">
+    <h2>Proyek Saya</h2>
+    <div class="project-grid">
+      <div class="project">
+        <img src="https://images.unsplash.com/photo-1523475496153-3d6cc7e1d0d2?q=80&w=1200" alt="">
+        <div class="meta">Website Sekolah</div>
+      </div>
+      <div class="project">
+        <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1200" alt="">
+        <div class="meta">Aplikasi Kasir</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="certs">
+    <h2>Sertifikat</h2>
+    <div class="cert-list">
+      <div class="cert"><img src="https://images.unsplash.com/photo-1520975912508-6b2e1f9e0b86?q=80&w=1200"></div>
+      <div class="cert"><img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=1200"></div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Hubungi Saya</h2>
+    <form>
+      <input type="text" placeholder="Nama Anda">
+      <input type="email" placeholder="Email Anda">
+      <textarea rows="4" placeholder="Pesan Anda"></textarea>
+      <button type="button" onclick="alert('Pesan terkirim (demo)')">Kirim</button>
+    </form>
+  </section>
+
+  <footer>
+    © <span id="year"></span> Adinia Rasya Putri • Dibuat dengan 💙
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Fungsi ubah foto profil
+    const photoInput = document.getElementById("photoInput");
+    const profileImg = document.getElementById("profileImg");
+
+    photoInput.addEventListener("change", function() {
+      const file = this.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          profileImg.src = e.target.result;
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+  </script>
+</body>
+</html>
