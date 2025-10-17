@@ -1,447 +1,683 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Portofolio — Adinia Rasya Putri</title>
-  <style>
-    :root {
-      --blue: #1e88e5;
-      --light-blue: #e3f2fd;
-      --dark-blue: #0d47a1;
-      --text: #0b2a4a;
-      --shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
-    }
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portofolio — Adinia Rasya Putri</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --blue: #2196f3;
+            --dark-blue: #0d47a1;
+            --black: #0a0a0a;
+            --gray: #bdbdbd;
+            --light-gray: #f5f5f5;
+            --shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+            --bg-main: #000; /* Warna Latar Belakang Utama */
+            --bg-secondary: #0d1b2a; /* Gradien Kedua */
+            --card-bg: #111; /* Latar Belakang Kartu */
+            --text-color: white; /* Warna Teks Utama */
+        }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: "Poppins", sans-serif;
-      scroll-behavior: smooth;
-    }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+            scroll-behavior: smooth;
+        }
 
-    body {
-      background: linear-gradient(180deg, var(--light-blue), #fff 60%);
-      color: var(--text);
-    }
+        body {
+            background: linear-gradient(180deg, var(--bg-main), var(--bg-secondary) 60%);
+            color: var(--text-color);
+        }
 
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px 60px;
-      background: white;
-      box-shadow: var(--shadow);
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      animation: fadeDown 1s ease-in-out;
-    }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 60px;
+            background: var(--black);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            animation: fadeDown 1s ease-in-out;
+        }
 
-    .logo {
-      font-size: 24px;
-      font-weight: 700;
-      color: var(--blue);
-    }
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--blue);
+        }
 
-    nav a {
-      text-decoration: none;
-      color: var(--text);
-      margin: 0 10px;
-      font-weight: 600;
-      transition: 0.3s;
-    }
+        nav a {
+            text-decoration: none;
+            color: white;
+            margin: 0 10px;
+            font-weight: 600;
+            transition: 0.3s;
+        }
 
-    nav a:hover {
-      color: var(--blue);
-      transform: scale(1.05);
-    }
+        nav a:hover {
+            color: var(--blue);
+            transform: scale(1.05);
+        }
 
-    .hero {
-      text-align: center;
-      padding: 80px 20px 50px;
-      opacity: 0;
-      animation: fadeUp 1s ease forwards;
-    }
+        .hero {
+            text-align: center;
+            padding: 80px 20px 50px;
+            opacity: 0;
+            animation: fadeUp 1s ease forwards;
+            min-height: 250px;
+        }
 
-    .hero h1 {
-      font-size: 36px;
-      color: var(--blue);
-      margin-bottom: 10px;
-    }
+        .hero h1 {
+            font-size: 38px;
+            color: var(--blue);
+            margin-bottom: 10px;
+        }
 
-    .hero p {
-      color: #555;
-    }
+        /* Styling untuk Typing Effect */
+        .hero h1 .typed-text {
+            color: white;
+            border-right: .15em solid var(--blue);
+            white-space: nowrap;
+            overflow: hidden;
+        }
+        .hero h1 .typed-text.typing {
+            animation: blink-caret .75s step-end infinite;
+        }
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: var(--blue); }
+        }
+        /* End Typing Effect Styling */
 
-    /* Profil */
-    .profile-section {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      align-items: center;
-      gap: 40px;
-      background: #fff;
-      box-shadow: var(--shadow);
-      border-radius: 20px;
-      padding: 40px;
-      margin: 50px auto;
-      max-width: 950px;
-      opacity: 0;
-      transform: translateY(50px);
-      transition: all 0.8s ease;
-    }
+        .hero p {
+            color: var(--gray);
+            font-size: 18px;
+        }
 
-    .profile-photo {
-      text-align: center;
-    }
+        /* Profil */
+        .profile-section {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: flex-start; /* Diubah agar info dan foto sejajar atas */
+            gap: 40px;
+            background: var(--card-bg);
+            box-shadow: var(--shadow);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 50px auto;
+            max-width: 950px;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
 
-    .profile-photo img {
-      width: 180px;
-      height: 180px;
-      border-radius: 50%;
-      object-fit: cover;
-      box-shadow: var(--shadow);
-      transition: transform 0.3s ease;
-    }
+        .profile-photo {
+            text-align: center;
+        }
 
-    .profile-photo img:hover {
-      transform: scale(1.05);
-    }
+        .profile-photo img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+            border: 3px solid var(--blue);
+        }
 
-    .upload-btn {
-      margin-top: 10px;
-    }
+        .profile-photo img:hover {
+            transform: scale(1.05);
+        }
 
-    .upload-btn label {
-      background: var(--blue);
-      color: #fff;
-      padding: 8px 16px;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 14px;
-      transition: 0.3s;
-    }
+        .upload-btn {
+            margin-top: 10px;
+        }
 
-    .upload-btn label:hover {
-      background: var(--dark-blue);
-    }
+        .upload-btn label {
+            background: var(--blue);
+            color: #fff;
+            padding: 8px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: 0.3s;
+        }
 
-    .profile-info h2 {
-      color: var(--dark-blue);
-      margin-bottom: 6px;
-    }
+        .upload-btn label:hover {
+            background: var(--dark-blue);
+        }
 
-    .profile-info p {
-      margin-bottom: 4px;
-    }
+        .profile-info {
+            max-width: 550px; /* Tambahkan agar konten tidak terlalu lebar */
+        }
 
-    .profile-info .desc {
-      margin-top: 10px;
-      color: #555;
-      max-width: 400px;
-    }
+        .profile-info h2 {
+            color: var(--blue);
+            margin-bottom: 6px;
+        }
 
-    /* Projects */
-    #projects {
-      max-width: 1000px;
-      margin: 40px auto;
-      padding: 20px;
-      opacity: 0;
-      transform: translateY(50px);
-      transition: all 0.8s ease;
-    }
+        .profile-info p {
+            margin-bottom: 4px;
+            color: var(--gray);
+        }
 
-    #projects h2 {
-      text-align: center;
-      color: var(--blue);
-      margin-bottom: 20px;
-    }
+        /* Tentang Saya */
+        .about {
+            background: #0d0d0d;
+            border-left: 4px solid var(--blue);
+            border-radius: 10px;
+            padding: 16px;
+            margin-top: 16px;
+            color: #ccc;
+        }
 
-    .project-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 20px;
-    }
+        .about h3 {
+            color: var(--blue);
+            margin-bottom: 8px;
+        }
 
-    .project {
-      background: #fff;
-      border-radius: 14px;
-      box-shadow: var(--shadow);
-      overflow: hidden;
-      transition: 0.3s;
-    }
+        /* Riwayat Pendidikan Section BARU */
+        .edu-section {
+            padding: 40px;
+            margin: 40px auto;
+            max-width: 950px;
+            background: var(--card-bg);
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
 
-    .project:hover {
-      transform: translateY(-5px) scale(1.02);
-    }
+        .edu-section h2 {
+            text-align: center;
+            color: var(--blue);
+            margin-bottom: 25px;
+        }
 
-    .project img {
-      width: 100%;
-      height: 160px;
-      object-fit: cover;
-    }
+        .timeline {
+            border-left: 3px solid var(--blue);
+            padding-left: 25px;
+            margin-top: 20px;
+        }
 
-    .project .meta {
-      padding: 10px 14px;
-      color: var(--blue);
-      font-weight: 600;
-    }
+        .timeline-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 25px;
+            position: relative;
+        }
 
-    /* Certificate */
-    #certs {
-      max-width: 1000px;
-      margin: 40px auto;
-      text-align: center;
-      padding: 20px;
-      opacity: 0;
-      transform: translateY(50px);
-      transition: all 0.8s ease;
-    }
+        .timeline-item:before {
+            content: '';
+            position: absolute;
+            left: -18px; /* Sesuaikan posisi agar sejajar dengan border-left */
+            top: 10px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: var(--blue);
+            border: 2px solid var(--dark-blue);
+        }
 
-    .cert-list {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 20px;
-    }
+        .edu-logo img {
+            width: 55px;
+            height: 55px;
+            border-radius: 8px;
+            object-fit: cover;
+            box-shadow: 0 0 8px rgba(33,150,243,0.4);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
 
-    .cert {
-      width: 240px;
-      height: 160px;
-      border-radius: 10px;
-      overflow: hidden;
-      box-shadow: var(--shadow);
-      transition: transform 0.3s ease;
-    }
+        .edu-logo img:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 15px rgba(33,150,243,0.6);
+        }
 
-    .cert:hover {
-      transform: scale(1.05);
-    }
+        .edu-text span {
+            font-weight: bold;
+            color: var(--blue);
+            font-size: 16px;
+        }
 
-    .cert img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
+        .edu-text p {
+            color: #d1d1d1;
+            font-size: 14px;
+            margin-top: 4px;
+            line-height: 1.6;
+        }
+        /* Akhir Riwayat Pendidikan Section BARU */
 
-    /* Contact */
-    #contact {
-      max-width: 700px;
-      margin: 40px auto;
-      background: white;
-      box-shadow: var(--shadow);
-      border-radius: 14px;
-      padding: 20px;
-      text-align: center;
-      opacity: 0;
-      transform: translateY(50px);
-      transition: all 0.8s ease;
-    }
+        /* Projects */
+        #projects {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 20px;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
 
-    #contact h2 {
-      color: var(--blue);
-      margin-bottom: 14px;
-    }
+        #projects h2 {
+            text-align: center;
+            color: var(--blue);
+            margin-bottom: 20px;
+        }
 
-    form {
-      display: grid;
-      gap: 10px;
-    }
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
+        }
 
-    input, textarea {
-      padding: 10px;
-      border-radius: 8px;
-      border: 1px solid #ccc;
-      font-size: 14px;
-    }
+        .project {
+            background: var(--card-bg);
+            border-radius: 14px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            transition: 0.3s;
+        }
 
-    button {
-      background: var(--blue);
-      color: white;
-      padding: 10px;
-      border: none;
-      border-radius: 8px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: 0.3s;
-    }
+        .project:hover {
+            transform: translateY(-8px) scale(1.03);
+            box-shadow: 0 10px 30px rgba(33, 150, 243, 0.4);
+        }
 
-    button:hover {
-      background: var(--dark-blue);
-      transform: scale(1.03);
-    }
+        .project img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+        }
 
-    footer {
-      text-align: center;
-      padding: 20px;
-      color: #666;
-      opacity: 0;
-      transform: translateY(50px);
-      transition: all 0.8s ease;
-    }
+        .project .meta {
+            padding: 10px 14px;
+            color: var(--blue);
+            font-weight: 600;
+        }
 
-    /* Social icons */
-    .social-links {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 25px;
-      margin-bottom: 12px;
-    }
+        /* Certificate */
+        #certs {
+            max-width: 1000px;
+            margin: 40px auto;
+            text-align: center;
+            padding: 20px;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
 
-    .social-links a img {
-      width: 34px;
-      height: 34px;
-      transition: transform 0.3s ease, filter 0.3s ease;
-    }
+        #certs h2 {
+            color: var(--blue);
+            margin-bottom: 20px;
+        }
 
-    .social-links a:hover img {
-      transform: scale(1.2);
-      filter: drop-shadow(0 0 8px var(--blue));
-    }
+        .cert-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
 
-    /* Animations */
-    @keyframes fadeUp {
-      from {opacity: 0; transform: translateY(40px);}
-      to {opacity: 1; transform: translateY(0);}
-    }
+        .cert {
+            width: 240px;
+            height: 160px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+            background: var(--black);
+            border: 2px solid transparent;
+        }
 
-    @keyframes fadeDown {
-      from {opacity: 0; transform: translateY(-20px);}
-      to {opacity: 1; transform: translateY(0);}
-    }
+        .cert:hover {
+            transform: scale(1.05);
+            border-color: var(--blue);
+        }
 
-    /* Responsive */
-    @media (max-width: 768px) {
-      header {
-        flex-direction: column;
-        gap: 10px;
-      }
+        .cert img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
 
-      .profile-section {
-        padding: 20px;
-      }
+        /* Contact */
+        #contact {
+            max-width: 700px;
+            margin: 40px auto;
+            background: var(--card-bg);
+            box-shadow: var(--shadow);
+            border-radius: 14px;
+            padding: 20px;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
 
-      .profile-info .desc {
-        max-width: 100%;
-      }
-    }
-  </style>
+        #contact h2 {
+            color: var(--blue);
+            margin-bottom: 14px;
+        }
+
+        form {
+            display: grid;
+            gap: 10px;
+        }
+
+        input, textarea {
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #444;
+            background: #0a0a0a;
+            color: white;
+            font-size: 14px;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        input:focus, textarea:focus {
+            border-color: var(--blue);
+            outline: none;
+            box-shadow: 0 0 5px rgba(33, 150, 243, 0.5);
+        }
+
+        button {
+            background: var(--blue);
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: var(--dark-blue);
+            transform: scale(1.03);
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #aaa;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 25px;
+            margin-bottom: 12px;
+        }
+
+        .social-links a img {
+            width: 34px;
+            height: 34px;
+            transition: transform 0.3s ease, filter 0.3s ease;
+        }
+
+        .social-links a:hover img {
+            transform: scale(1.2);
+            filter: drop-shadow(0 0 8px var(--blue));
+        }
+
+        @keyframes fadeUp {
+            from {opacity: 0; transform: translateY(40px);}
+            to {opacity: 1; transform: translateY(0);}
+        }
+
+        @keyframes fadeDown {
+            from {opacity: 0; transform: translateY(-20px);}
+            to {opacity: 1; transform: translateY(0);}
+        }
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 10px;
+            }
+            header, .profile-section, #projects, #certs, #contact, footer, .edu-section {
+                padding-left: 15px;
+                padding-right: 15px;
+            }
+            .profile-section {
+                flex-direction: column;
+                padding: 20px;
+            }
+            .profile-photo {
+                margin-right: 0;
+            }
+            .profile-info {
+                max-width: 100%;
+            }
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <div class="logo">Adinia Rasya Putri</div>
-    <nav>
-      <a href="#profile">Profil</a>
-      <a href="#projects">Proyek</a>
-      <a href="#certs">Sertifikat</a>
-      <a href="#contact">Kontak</a>
-    </nav>
-  </header>
+    <header>
+        <div class="logo">Adinia Rasya Putri</div>
+        <nav>
+            <a href="#profile">Profil</a>
+            <a href="#education">Pendidikan</a>
+            <a href="#projects">Proyek</a>
+            <a href="#certs">Sertifikat</a>
+            <a href="#contact">Kontak</a>
+        </nav>
+    </header>
 
-  <section class="hero">
-    <h1>Selamat Datang di Portofolio Saya 💙</h1>
-    <p>Saya siswi SMK Informatika Utama jurusan Rekayasa Perangkat Lunak (PPLG)</p>
-  </section>
+    <section class="hero">
+        <h1>Halo, Saya <span class="typed-text"></span></h1>
+        <p>Saya siswi SMK Informatika Utama jurusan Rekayasa Perangkat Lunak (PPLG)</p>
+    </section>
 
-  <section id="profile" class="profile-section">
-    <div class="profile-photo">
-      <img id="profileImg" src="profiladinia.png" alt="Foto Profil">
-      <div class="upload-btn">
-        <input type="file" id="photoInput" accept="image/*" style="display:none;">
-        <label for="photoInput">Pilih Foto</label>
-      </div>
-    </div>
+    <section id="profile" class="profile-section">
+        <div class="profile-photo">
+            <img id="profileImg" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=800" alt="Foto Profil">
+            <div class="upload-btn">
+                <input type="file" id="photoInput" accept="image/*" style="display:none;">
+                <label for="photoInput">Ganti Foto</label>
+            </div>
+        </div>
 
-    <div class="profile-info">
-      <h2>Adinia Rasya Putri</h2>
-      <p><strong>Tempat, Tanggal Lahir:</strong> Jakarta, 19 Maret 2009</p>
-      <p><strong>Pendidikan:</strong> SMK Informatika Utama - PPLG</p>
-      <p><strong>Hobi:</strong> Membaca</p>
-      <p class="desc">Saya adalah siswi SMK Informatika Utama jurusan Pengembangan Perangkat Lunak dan Gim (PPLG) yang memiliki minat besar di bidang pengembangan web dan desain digital.
-      Saya menguasai HTML, CSS, JavaScript, serta terbiasa menggunakan Canva untuk desain kreatif dan Microsoft Office untuk kebutuhan administrasi.
-      Saya selalu bersemangat mempelajari hal baru dan berkomitmen untuk berkembang menjadi programmer dan web designer profesional.</p>
-    </div>
-  </section>
+        <div class="profile-info">
+            <h2>Adinia Rasya Putri</h2>
+            <p><strong>Tempat, Tanggal Lahir:</strong> Jakarta, 19 Maret 2009</p>
+            <p><strong>Hobi:</strong> Membaca, Desain, dan Koding 💻</p>
 
-  <section id="projects">
-    <h2>Proyek Saya</h2>
-    <div class="project-grid">
-      <div class="project">
-        <img src="webstatis.png" alt="Website Statis">
-        <div class="meta">Website Statis</div>
-      </div>
-      <div class="project">
-        <img src="kasir.png" alt="Aplikasi Kasir">
-        <div class="meta">Aplikasi Kasir</div>
-      </div>
-    </div>
-  </section>
+            <div class="about">
+                <h3>Tentang Saya</h3>
+                <p>
+                    Saya adalah siswi SMK Informatika Utama jurusan <b>Rekayasa Perangkat Lunak (PPLG)</b> yang bersemangat di bidang pengembangan web, desain digital, dan teknologi.
+                    Saya menguasai <b>HTML, CSS, dan JavaScript</b>, serta terbiasa menggunakan <b>Canva</b> untuk desain dan <b>Microsoft Office</b> untuk pengolahan dokumen.
+                    Saya memiliki semangat tinggi dalam mempelajari hal baru dan bertekad menjadi <b>programmer dan web designer profesional</b>.
+                </p>
+            </div>
+        </div>
+    </section>
 
-  <section id="certs">
-    <h2>Sertifikat</h2>
-    <div class="cert-list">
-      <div class="cert"><img src="html.jpg" alt="Sertifikat HTML"></div>
-      <div class="cert"><img src="css.jpg" alt="Sertifikat CSS"></div>
-      <div class="cert"><img src="javaintermediate.jpg" alt="Sertifikat Java Intermediate"></div>
-      <div class="cert"><img src="java.png" alt="Sertifikat Java (Dasar)"></div>
-    </div>
-  </section>
+    <section id="education" class="edu-section">
+        <h2>Riwayat Pendidikan 📘</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="edu-logo">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Logo_SMP.svg/512px-Logo_SMP.svg.png" alt="Logo SMP">
+                </div>
+                <div class="edu-text">
+                    <span>SMPN 21 Depok (2021–2024)</span>
+                    <p>
+                        Menyelesaikan pendidikan menengah pertama dengan prestasi akademik baik dan aktif dalam kegiatan sekolah.
+                        Mulai mengenal komputer dan desain digital dasar.
+                    </p>
+                </div>
+            </div>
 
-  <section id="contact">
-    <h2>Hubungi Saya</h2>
-    <form>
-      <input type="text" placeholder="Nama Anda">
-      <input type="email" placeholder="Email Anda">
-      <textarea rows="4" placeholder="Pesan Anda"></textarea>
-      <button type="button" onclick="alert('Pesan terkirim (demo)')">Kirim</button>
-    </form>
-  </section>
+            <div class="timeline-item">
+                <div class="edu-logo">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Logo_SMK.svg/512px-Logo_SMK.svg.png" alt="Logo SMK">
+                </div>
+                <div class="edu-text">
+                    <span>SMK Informatika Utama — Jurusan PPLG (2024–Sekarang)</span>
+                    <p>
+                        Fokus di bidang <b>Rekayasa Perangkat Lunak</b> seperti pembuatan website, logika pemrograman, dan desain antarmuka.
+                        Aktif membuat proyek seperti <b>Website Statis</b> dan <b>Aplikasi Kasir</b>.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <footer id="footer">
-    <div class="social-links">
-      <a href="https://www.instagram.com/dinia_rasya/" target="_blank" title="Instagram">
-        <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram">
-      </a>
-      <a href="https://adiniarasya.github.io" target="_blank" title="GitHub">
-        <img src="https://cdn-icons-png.flaticon.com/512/733/733553.png" alt="GitHub">
-      </a>
-      <a href="https://wa.me/6285771400670" target="_blank" title="Chat WhatsApp">
-        <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp">
-      </a>
-    </div>
-    © <span id="year"></span> Adinia Rasya Putri • Dibuat dengan 💙
-  </footer>
+    <section id="projects">
+        <h2>Proyek Saya 🚀</h2>
+        <div class="project-grid">
+            <div class="project">
+                <img src="webstatis.png" alt="Website Statis">
+                <div class="meta">Website Statis (HTML/CSS)</div>
+            </div>
+            <div class="project">
+                <img src="kasir.png" alt="Aplikasi Kasir">
+                <div class="meta">Aplikasi Kasir (Java)</div>
+            </div>
+            </div>
+    </section>
 
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
+    <section id="certs">
+        <h2>Sertifikat 🏆</h2>
+        <div class="cert-list">
+            <div class="cert"><img src="html.jpg" alt="Sertifikat HTML"></div>
+            <div class="cert"><img src="css.jpg" alt="Sertifikat CSS"></div>
+            <div class="cert"><img src="javaintermediate.jpg" alt="Sertifikat Java Intermediate"></div>
+            <div class="cert"><img src="java.png" alt="Sertifikat Java (Dasar)"></div>
+        </div>
+    </section>
 
-    // Upload foto profil
-    const photoInput = document.getElementById("photoInput");
-    const profileImg = document.getElementById("profileImg");
-    photoInput.addEventListener("change", function() {
-      const file = this.files[0];
-      if (file) {
-        const reader = new FileReader();
-        reader.onload = e => profileImg.src = e.target.result;
-        reader.readAsDataURL(file);
-      }
-    });
+    <section id="contact">
+        <h2>Hubungi Saya ✉️</h2>
+        <form>
+            <input type="text" placeholder="Nama Anda" required>
+            <input type="email" placeholder="Email Anda" required>
+            <textarea rows="4" placeholder="Pesan Anda" required></textarea>
+            <button type="submit" id="submitBtn">Kirim Pesan</button>
+        </form>
+    </section>
 
-    // Animasi saat discroll
-    const fadeSections = document.querySelectorAll(".profile-section, #projects, #certs, #contact, footer");
-    window.addEventListener("scroll", () => {
-      fadeSections.forEach(sec => {
-        const pos = sec.getBoundingClientRect().top;
-        const winHeight = window.innerHeight;
-        if (pos < winHeight - 100) {
-          sec.style.opacity = "1";
-          sec.style.transform = "translateY(0)";
+    <footer id="footer">
+        <div class="social-links">
+            <a href="https://www.instagram.com/dinia_rasya/" target="_blank" title="Instagram">
+                <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram">
+            </a>
+            <a href="https://adiniarasya.github.io" target="_blank" title="GitHub">
+                <img src="https://cdn-icons-png.flaticon.com/512/733/733553.png" alt="GitHub">
+            </a>
+            <a href="https://wa.me/6285771400670" target="_blank" title="Chat WhatsApp">
+                <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp">
+            </a>
+        </div>
+        © <span id="year"></span> Adinia Rasya Putri • Dibuat dengan 💙
+    </footer>
+
+    <script>
+        // Set Tahun di Footer
+        document.getElementById("year").textContent = new Date().getFullYear();
+
+        // Logika Ganti Foto Profil
+        const photoInput = document.getElementById("photoInput");
+        const profileImg = document.getElementById("profileImg");
+        photoInput.addEventListener("change", function() {
+            const file = this.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = e => profileImg.src = e.target.result;
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // Logika Scroll-Reveal
+        // Tambahkan #education ke daftar yang perlu di-reveal
+        const fadeSections = document.querySelectorAll(".profile-section, #education, #projects, #certs, #contact, footer");
+        
+        const checkScroll = () => {
+            fadeSections.forEach(sec => {
+                const pos = sec.getBoundingClientRect().top;
+                const winHeight = window.innerHeight;
+                // Menggunakan 150px sebagai offset
+                if (pos < winHeight - 150) { 
+                    sec.style.opacity = "1";
+                    sec.style.transform = "translateY(0)";
+                }
+            });
+        };
+        
+        window.addEventListener("scroll", checkScroll);
+        // Jalankan sekali saat load untuk elemen di atas
+        document.addEventListener("DOMContentLoaded", checkScroll);
+
+        // Logika Form Kontak (Demo Alert)
+        document.getElementById("submitBtn").addEventListener("click", function(e) {
+            e.preventDefault(); // Mencegah submit form sebenarnya
+            alert("Terima kasih! Pesan Anda sudah terkirim (Demo interaksi). Saya akan segera membalasnya. 😉");
+            
+            // Opsional: reset form setelah alert
+            const form = this.closest('form');
+            if(form) form.reset();
+        });
+
+
+        // --- LOGIKA TYPING EFFECT (The "Keren" part) ---
+        const typedTextSpan = document.querySelector(".typed-text");
+        const textArray = ["Adinia Rasya Putri", "Seorang Web Developer", "Juga Web Designer"];
+        const typingDelay = 100;
+        const erasingDelay = 50;
+        const newTextDelay = 2000; // Delay sebelum mulai mengetik frasa berikutnya
+        let textArrayIndex = 0;
+        let charIndex = 0;
+
+        function type() {
+            if (charIndex < textArray[textArrayIndex].length) {
+                if(!typedTextSpan.classList.contains("typing")) typedTextSpan.classList.add("typing");
+                typedTextSpan.textContent += textArray[textArrayIndex].charAt(charIndex);
+                charIndex++;
+                setTimeout(type, typingDelay);
+            } 
+            else {
+                typedTextSpan.classList.remove("typing");
+                setTimeout(erase, newTextDelay);
+            }
         }
-      });
-    });
-  </script>
+
+        function erase() {
+            if (charIndex > 0) {
+                if(!typedTextSpan.classList.contains("typing")) typedTextSpan.classList.add("typing");
+                typedTextSpan.textContent = textArray[textArrayIndex].substring(0, charIndex-1);
+                charIndex--;
+                setTimeout(erase, erasingDelay);
+            } 
+            else {
+                typedTextSpan.classList.remove("typing");
+                textArrayIndex++;
+                if(textArrayIndex>=textArray.length) textArrayIndex=0;
+                // Tunggu sebentar sebelum mengetik array berikutnya
+                setTimeout(type, typingDelay + 500); 
+            }
+        }
+
+        // Mulai Typing Effect
+        document.addEventListener("DOMContentLoaded", function() {
+            // Panggil checkScroll sekali di sini juga
+            checkScroll(); 
+            // Delay 1 detik sebelum memulai typing
+            setTimeout(type, 1000); 
+        });
+
+    </script>
 </body>
 </html>
