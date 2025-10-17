@@ -3,10 +3,9 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Portfolio — Afa</title>
-  <meta name="description" content="Portfolio pribadi — Afa" />
+  <title>Portfolio — Adinia Rasya Putri</title>
+  <meta name="description" content="Portfolio pribadi — Adinia Rasya Putri" />
   <style>
-    /* Reset + base */
     :root{
       --blue-50:#eaf4ff;
       --blue-100:#cfeeff;
@@ -14,26 +13,13 @@
       --blue-600:#0b63d4;
       --navy:#0b2a4a;
       --muted:#7a8aa6;
-      --glass: rgba(255,255,255,0.6);
-      --card-shadow: 0 8px 24px rgba(11,38,77,0.08);
+      --card-shadow:0 8px 24px rgba(11,38,77,0.08);
       --radius:14px;
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      font-family:Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
     }
     *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      background: linear-gradient(180deg,var(--blue-50),white 55%);
-      color:var(--navy);
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-      line-height:1.45;
-    }
-
-    /* container */
+    body{margin:0;background:linear-gradient(180deg,var(--blue-50),white 55%);color:var(--navy);line-height:1.45;}
     .wrap{max-width:1100px;margin:36px auto;padding:28px}
-
-    /* header */
     header{display:flex;align-items:center;justify-content:space-between;gap:16px}
     .brand{display:flex;align-items:center;gap:12px}
     .logo{width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,var(--blue-400),var(--blue-600));display:grid;place-items:center;color:white;font-weight:700;font-size:20px;box-shadow:var(--card-shadow)}
@@ -43,7 +29,6 @@
     .nav a.cta{background:var(--blue-400);color:white}
     .nav a:hover{opacity:0.95}
 
-    /* hero */
     .hero{display:grid;grid-template-columns:1fr 360px;gap:28px;margin-top:28px;align-items:center}
     .intro{background:rgba(255,255,255,0.8);padding:26px;border-radius:16px;box-shadow:var(--card-shadow)}
     .intro h2{margin:0 0 8px;font-size:28px}
@@ -52,199 +37,11 @@
     .btn{padding:10px 16px;border-radius:10px;border:0;cursor:pointer;font-weight:600}
     .btn.primary{background:var(--blue-400);color:white}
     .btn.ghost{background:transparent;border:1px solid rgba(11,99,212,0.12)}
-
     .photo-card{background:linear-gradient(180deg,white,var(--blue-50));padding:14px;border-radius:16px;display:grid;place-items:center;box-shadow:var(--card-shadow)}
     .photo-card img{width:320px;height:320px;object-fit:cover;border-radius:12px;display:block}
 
-    /* sections */
     section{margin-top:26px}
-    .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
     .card{background:white;padding:16px;border-radius:12px;box-shadow:var(--card-shadow)}
     .small{font-size:13px;color:var(--muted)}
 
-    /* projects */
-    .projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:12px}
-    .project{position:relative;border-radius:12px;overflow:hidden;cursor:pointer}
-    .project img{width:100%;height:180px;object-fit:cover;display:block;transition:transform .35s ease}
-    .project:hover img{transform:scale(1.04)}
-    .project .meta{position:absolute;left:12px;bottom:12px;background:linear-gradient(180deg, rgba(11,99,212,0.18), rgba(11,99,212,0.06));padding:8px 10px;border-radius:10px;color:white;font-weight:700;font-size:14px}
-
-    /* certificates */
-    .cert-list{display:flex;flex-wrap:wrap;gap:12px}
-    .cert{width:220px;height:130px;border-radius:10px;display:grid;place-items:center;background:linear-gradient(180deg,white,var(--blue-50));box-shadow:var(--card-shadow);overflow:hidden}
-    .cert img{width:100%;height:100%;object-fit:cover}
-
-    /* contact */
-    .contact-form{display:grid;gap:10px}
-    input,textarea{padding:10px;border-radius:10px;border:1px solid #e3eefb;font-size:14px}
-    textarea{min-height:110px}
-
-    footer{margin-top:32px;text-align:center;color:var(--muted);font-size:13px}
-
-    /* modal */
-    .modal{position:fixed;inset:0;background:rgba(2,6,23,0.6);display:none;align-items:center;justify-content:center;padding:20px}
-    .modal .box{max-width:900px;width:100%;background:transparent}
-    .modal img{width:100%;height:auto;border-radius:12px;display:block}
-    .modal .close{position:absolute;right:22px;top:18px;background:white;border-radius:12px;padding:8px}
-
-    /* responsive */
-    @media (max-width:880px){
-      .hero{grid-template-columns:1fr}
-      .photo-card img{width:100%;height:260px}
-    }
-
-  </style>
-</head>
-<body>
-  <div class="wrap">
-    <header>
-      <div class="brand">
-        <div class="logo">AF</div>
-        <div>
-          <h1>Afa — Portfolio</h1>
-          <div class="small">Web Developer · UI enthusiast</div>
-        </div>
-      </div>
-      <nav class="nav">
-        <a href="#projects">Projects</a>
-        <a href="#certs">Sertifikat</a>
-        <a href="#contact" class="cta">Hubungi</a>
-      </nav>
-    </header>
-
-    <main>
-      <section class="hero">
-        <div class="intro">
-          <h2>Halo, saya Afa 👋</h2>
-          <p>Saya seorang pengembang web dan desainer antarmuka. Di sini tempat saya menampilkan proyek, sertifikat, dan kontak untuk kerja praktik / magang.</p>
-
-          <div class="cta-row">
-            <button class="btn primary" onclick="scrollToSection('#projects')">Lihat Proyek</button>
-            <button class="btn ghost" onclick="scrollToSection('#contact')">Kontak</button>
-          </div>
-
-          <div style="display:flex;gap:12px;margin-top:18px;">
-            <div class="card small">Lokasi: Indonesia</div>
-            <div class="card small">Keahlian: HTML · CSS · JS · Laravel</div>
-          </div>
-        </div>
-
-        <aside class="photo-card">
-          <!-- Ganti src dengan foto profil Anda -->
-          <img id="profilePic" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=800&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="Foto Profil">
-        </aside>
-      </section>
-
-      <section id="projects">
-        <h3>Proyek Saya</h3>
-        <div class="projects-grid" id="projectsGrid">
-          <!-- Contoh project (ganti src dan data-title) -->
-          <div class="project" data-img="images/project1.jpg" data-title="Website Sekolah">
-            <img src="https://images.unsplash.com/photo-1523475496153-3d6cc7e1d0d2?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="Project 1">
-            <div class="meta">Website Sekolah</div>
-          </div>
-
-          <div class="project" data-img="images/project2.jpg" data-title="Aplikasi Kasir">
-            <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="Project 2">
-            <div class="meta">Aplikasi Kasir</div>
-          </div>
-
-          <div class="project" data-img="images/project3.jpg" data-title="Sistem Informasi">
-            <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="Project 3">
-            <div class="meta">Sistem Informasi</div>
-          </div>
-        </div>
-        <div style="margin-top:12px;">
-          <small class="small">Tip: Untuk menambah project, tambahkan elemen <code>div.project</code> di dalam <code>#projectsGrid</code> dengan atribut <code>data-img</code> (untuk lightbox) dan gambar thumbnail.</small>
-        </div>
-      </section>
-
-      <section id="certs">
-        <h3>Sertifikat</h3>
-        <div class="cert-list">
-          <!-- Ganti src dengan gambar sertifikat Anda -->
-          <div class="cert"><img src="https://images.unsplash.com/photo-1520975912508-6b2e1f9e0b86?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="Sertifikat 1"></div>
-          <div class="cert"><img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="Sertifikat 2"></div>
-        </div>
-        <div style="margin-top:10px;"><small class="small">Tip: Simpan file sertifikat di folder <code>/images</code> dan ganti atribut <code>src</code> pada elemen <code>img</code> di atas.</small></div>
-      </section>
-
-      <section id="contact">
-        <h3>Hubungi Saya</h3>
-        <div class="card contact-form">
-          <input id="name" placeholder="Nama" />
-          <input id="email" placeholder="Email" />
-          <textarea id="message" placeholder="Pesan / permintaan magang"></textarea>
-          <div style="display:flex;gap:8px;">
-            <button class="btn primary" onclick="sendMessage()">Kirim</button>
-            <button class="btn ghost" onclick="resetForm()">Reset</button>
-          </div>
-          <div id="formFeedback" class="small" style="margin-top:8px;color:var(--muted)"></div>
-        </div>
-      </section>
-
-    </main>
-
-    <footer>
-      © <span id="year"></span> Afa • Dibuat dengan 💙
-    </footer>
-  </div>
-
-  <!-- Modal / Lightbox -->
-  <div id="modal" class="modal" role="dialog" aria-hidden="true">
-    <div class="box">
-      <button class="close" onclick="closeModal()">✕</button>
-      <img id="modalImg" src="" alt="Preview">
-    </div>
-  </div>
-
-  <script>
-    // small helpers
-    function $(sel){return document.querySelector(sel)}
-    function $all(sel){return Array.from(document.querySelectorAll(sel))}
-
-    // scroll to section
-    function scrollToSection(sel){const el=document.querySelector(sel);if(!el) return;el.scrollIntoView({behavior:'smooth',block:'start'})}
-
-    // project lightbox
-    $all('.project').forEach(p=>{
-      p.addEventListener('click',()=>{
-        const img = p.getAttribute('data-img') || p.querySelector('img').src;
-        openModal(img)
-      })
-    })
-
-    function openModal(src){const modal=document.getElementById('modal');const mi=document.getElementById('modalImg');mi.src=src;modal.style.display='flex';modal.setAttribute('aria-hidden','false')}
-    function closeModal(){const modal=document.getElementById('modal');modal.style.display='none';document.getElementById('modalImg').src='';modal.setAttribute('aria-hidden','true')}
-    document.getElementById('modal').addEventListener('click', (e)=>{ if(e.target.id==='modal') closeModal(); })
-
-    // simple contact form (demo only)
-    function sendMessage(){
-      const name = $('#name').value.trim();
-      const email = $('#email').value.trim();
-      const msg = $('#message').value.trim();
-      const fb = $('#formFeedback');
-      if(!name || !email || !msg){ fb.textContent='Lengkapi semua kolom terlebih dahulu.'; return }
-      fb.textContent = 'Terima kasih, pesan terkirim! (Demo — real backend diperlukan)';
-      // clear after 2s
-      setTimeout(()=>{resetForm();},2000)
-    }
-    function resetForm(){ $('#name').value=''; $('#email').value=''; $('#message').value=''; $('#formFeedback').textContent=''; }
-
-    // handy: dynamically allow adding project (for quick editing in console)
-    window.addProject = function(title, thumb, img){
-      const grid = document.getElementById('projectsGrid');
-      const el = document.createElement('div'); el.className='project'; el.setAttribute('data-img', img || thumb);
-      el.innerHTML = `<img src="${thumb}" alt="${title}"><div class="meta">${title}</div>`;
-      el.addEventListener('click', ()=> openModal(img || thumb));
-      grid.appendChild(el);
-    }
-
-    // set year
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    // Accessibility: close modal with ESC
-    document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeModal() })
-  </script>
-</body>
-</html>
+    .profile-grid{display:grid;gri
