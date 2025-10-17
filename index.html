@@ -3,21 +3,22 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Portfolio Adinia Rasya Putri</title>
+  <title>Portofolio — Adinia Rasya Putri</title>
   <style>
     :root {
       --blue: #1e88e5;
       --light-blue: #e3f2fd;
       --dark-blue: #0d47a1;
       --text: #0b2a4a;
-      --shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+      --shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
     }
 
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: 'Poppins', sans-serif;
+      font-family: "Poppins", sans-serif;
+      scroll-behavior: smooth;
     }
 
     body {
@@ -35,6 +36,7 @@
       position: sticky;
       top: 0;
       z-index: 10;
+      animation: fadeDown 1s ease-in-out;
     }
 
     .logo {
@@ -53,15 +55,18 @@
 
     nav a:hover {
       color: var(--blue);
+      transform: scale(1.05);
     }
 
     .hero {
       text-align: center;
-      padding: 60px 20px 40px;
+      padding: 80px 20px 50px;
+      opacity: 0;
+      animation: fadeUp 1s ease forwards;
     }
 
     .hero h1 {
-      font-size: 32px;
+      font-size: 36px;
       color: var(--blue);
       margin-bottom: 10px;
     }
@@ -80,9 +85,12 @@
       background: #fff;
       box-shadow: var(--shadow);
       border-radius: 20px;
-      padding: 30px;
-      margin: 40px auto;
-      max-width: 900px;
+      padding: 40px;
+      margin: 50px auto;
+      max-width: 950px;
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 0.8s ease;
     }
 
     .profile-photo {
@@ -95,6 +103,11 @@
       border-radius: 50%;
       object-fit: cover;
       box-shadow: var(--shadow);
+      transition: transform 0.3s ease;
+    }
+
+    .profile-photo img:hover {
+      transform: scale(1.05);
     }
 
     .upload-btn {
@@ -135,6 +148,9 @@
       max-width: 1000px;
       margin: 40px auto;
       padding: 20px;
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 0.8s ease;
     }
 
     #projects h2 {
@@ -158,7 +174,7 @@
     }
 
     .project:hover {
-      transform: translateY(-5px);
+      transform: translateY(-5px) scale(1.02);
     }
 
     .project img {
@@ -179,6 +195,9 @@
       margin: 40px auto;
       text-align: center;
       padding: 20px;
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 0.8s ease;
     }
 
     .cert-list {
@@ -194,6 +213,11 @@
       border-radius: 10px;
       overflow: hidden;
       box-shadow: var(--shadow);
+      transition: transform 0.3s ease;
+    }
+
+    .cert:hover {
+      transform: scale(1.05);
     }
 
     .cert img {
@@ -211,6 +235,9 @@
       border-radius: 14px;
       padding: 20px;
       text-align: center;
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 0.8s ease;
     }
 
     #contact h2 {
@@ -243,12 +270,40 @@
 
     button:hover {
       background: var(--dark-blue);
+      transform: scale(1.03);
     }
 
     footer {
       text-align: center;
       padding: 20px;
       color: #666;
+    }
+
+    /* Animations */
+    @keyframes fadeUp {
+      from {opacity: 0; transform: translateY(40px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    @keyframes fadeDown {
+      from {opacity: 0; transform: translateY(-20px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .profile-section {
+        padding: 20px;
+      }
+
+      .profile-info .desc {
+        max-width: 100%;
+      }
     }
   </style>
 </head>
@@ -281,7 +336,7 @@
       <p><strong>Tempat, Tanggal Lahir:</strong> Jakarta, 19 Maret 2009</p>
       <p><strong>Pendidikan:</strong> SMK Informatika Utama - PPLG</p>
       <p><strong>Hobi:</strong> Membaca</p>
-      <p class="desc">Saya adalah siswi SMK Informatika Utama yang bersemangat di bidang pengembangan perangkat lunak, desain web, dan teknologi. Saya senang mempelajari hal-hal baru dan terus mengasah kemampuan saya di dunia digital.</p>
+      <p class="desc">Saya adalah siswi SMK Informatika Utama yang bersemangat di bidang pengembangan perangkat lunak dan desain web. Saya senang mempelajari hal baru dan bercita-cita menjadi programmer profesional.</p>
     </div>
   </section>
 
@@ -324,19 +379,29 @@
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
 
-    // Fungsi ubah foto profil
+    // Upload foto profil
     const photoInput = document.getElementById("photoInput");
     const profileImg = document.getElementById("profileImg");
-
     photoInput.addEventListener("change", function() {
       const file = this.files[0];
       if (file) {
         const reader = new FileReader();
-        reader.onload = function(e) {
-          profileImg.src = e.target.result;
-        };
+        reader.onload = e => profileImg.src = e.target.result;
         reader.readAsDataURL(file);
       }
+    });
+
+    // Animasi saat discroll
+    const fadeSections = document.querySelectorAll(".profile-section, #projects, #certs, #contact");
+    window.addEventListener("scroll", () => {
+      fadeSections.forEach(sec => {
+        const pos = sec.getBoundingClientRect().top;
+        const winHeight = window.innerHeight;
+        if (pos < winHeight - 100) {
+          sec.style.opacity = "1";
+          sec.style.transform = "translateY(0)";
+        }
+      });
     });
   </script>
 </body>
